@@ -2,7 +2,8 @@ class_name Game
 extends Node2D
 
 const MAX_CUSTOMER_COUNT: int = 4
-const NEW_CUSTOMER_COOL_DOWN_SECS: float = 30
+const MIN_CUSTOMER_COOL_DOWN_SECS: float = 20
+const MAX_CUSTOMER_COOL_DOWN_SECS: float = 50
 
 var delayed_customers: Array[Order]
 var customer_orders: Array[Order]
@@ -19,7 +20,8 @@ func add_order() -> void:
 	else:
 		customer_orders.append(Order.new(1))
 	
-	var timer: SceneTreeTimer = get_tree().create_timer(NEW_CUSTOMER_COOL_DOWN_SECS)
+	var cool_down_secs = randf_range(MIN_CUSTOMER_COOL_DOWN_SECS, MAX_CUSTOMER_COOL_DOWN_SECS)
+	var timer: SceneTreeTimer = get_tree().create_timer(cool_down_secs)
 	timer.timeout.connect(add_order)
 	print_orders()
 
