@@ -65,7 +65,8 @@ offset_right = 2739.9993
 offset_bottom = 1399.9998
 theme = ExtResource("4_p57ef")
 
-[node name="Node" type="Node" parent="CustomerScreen" unique_id=1119747611]
+[node name="Node" type="Node2D" parent="CustomerScreen" unique_id=1004670800]
+scale = Vector2(1.667, 1.667)
 
 [node name="customer" parent="CustomerScreen/Node" unique_id=478099786 instance=ExtResource("6_gee14")]
 position = Vector2(1244, 646.5)
