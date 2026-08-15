@@ -5,6 +5,7 @@ extends Camera2D
 @export var scroll_v: bool
 @export var bounding_sprite: Sprite2D
 @export var screen_overlay: ColorRect
+@export var section_positions: Array[Vector2]
 
 
 func _input(event: InputEvent) -> void:
@@ -32,3 +33,10 @@ func _input(event: InputEvent) -> void:
 					position.y -= event.relative.y
 			
 			screen_overlay.position = position * bounding_sprite.scale
+	elif event is InputEventKey:
+		if event.is_action_pressed("section_1"):
+			position = section_positions[0]
+		elif event.is_action_pressed("section_2"):
+			position = section_positions[1]
+		elif event.is_action_pressed("section_3"):
+			position = section_positions[2]

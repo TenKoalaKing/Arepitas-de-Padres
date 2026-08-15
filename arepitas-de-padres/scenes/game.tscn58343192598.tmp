@@ -77,7 +77,6 @@ script = ExtResource("6_p57ef")
 scroll_h = true
 bounding_sprite = NodePath("..")
 screen_overlay = NodePath("../../ScreenOverlay")
-section_positions = Array[Vector2]([Vector2(0, 0), Vector2(2318.4, 0), Vector2(1166.4, 0)])
 
 [node name="ScreenOverlay" type="ColorRect" parent="." unique_id=396238436]
 mouse_filter = 2
