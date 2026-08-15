@@ -4,9 +4,13 @@ extends Camera2D
 @export var scroll_h: bool
 @export var scroll_v: bool
 @export var bounding_sprite: Sprite2D
+@export var screen_overlay: ColorRect
 
 
 func _input(event: InputEvent) -> void:
+	if not visible:
+		return
+	
 	var bounding_sprite_size: Vector2 = bounding_sprite.texture.get_size() * bounding_sprite.scale
 	var upper_bounds: Vector2 = bounding_sprite_size - Vector2(get_viewport().size)
 	
@@ -26,3 +30,5 @@ func _input(event: InputEvent) -> void:
 					position.y = upper_bounds.y
 				else:
 					position.y -= event.relative.y
+			
+			screen_overlay.position = position * bounding_sprite.scale

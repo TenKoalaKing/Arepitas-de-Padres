@@ -7,12 +7,13 @@
 [ext_resource type="Texture2D" uid="uid://3y0c7by7k5iu" path="res://assets/planks.png" id="5_iywne"]
 [ext_resource type="Script" uid="uid://tqvfdny6tgyt" path="res://scripts/scroll_camera.gd" id="6_p57ef"]
 
-[node name="Game" type="Node2D" unique_id=255140021 node_paths=PackedStringArray("customer_screen", "interior", "interior_camera", "shop_button")]
+[node name="Game" type="Node2D" unique_id=255140021 node_paths=PackedStringArray("customer_screen", "interior", "interior_camera", "shop_button", "screen_overlay")]
 script = ExtResource("1_uwrxv")
 customer_screen = NodePath("CustomerScreen")
 interior = NodePath("Interior")
 interior_camera = NodePath("Interior/ScrollCamera")
 shop_button = NodePath("CustomerScreen/Shop/ShopButton")
+screen_overlay = NodePath("ScreenOverlay")
 
 [node name="CustomerScreen" type="Sprite2D" parent="." unique_id=887994028]
 visible = false
@@ -37,9 +38,13 @@ scale = Vector2(0.7, 0.7)
 texture = ExtResource("5_iywne")
 centered = false
 
-[node name="ScrollCamera" type="Camera2D" parent="Interior" unique_id=1334660153 node_paths=PackedStringArray("bounding_sprite")]
+[node name="ScrollCamera" type="Camera2D" parent="Interior" unique_id=1334660153 node_paths=PackedStringArray("bounding_sprite", "screen_overlay")]
 anchor_mode = 0
 enabled = false
 script = ExtResource("6_p57ef")
 scroll_h = true
 bounding_sprite = NodePath("..")
+screen_overlay = NodePath("../../ScreenOverlay")
+
+[node name="ScreenOverlay" type="ColorRect" parent="." unique_id=396238436]
+mouse_filter = 2

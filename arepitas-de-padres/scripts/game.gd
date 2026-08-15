@@ -4,13 +4,16 @@ extends Node2D
 const MAX_CUSTOMER_COUNT: int = 4
 const MIN_CUSTOMER_COOL_DOWN_SECS: float = 20
 const MAX_CUSTOMER_COOL_DOWN_SECS: float = 50
+const FADE_DURATION_SECS: float = 0.5
 
 @export var customer_screen: Sprite2D
 @export var interior: Sprite2D
 
-@export var interior_camera: Camera2D
+@export var interior_camera: ScrollCamera
 
 @export var shop_button: Button
+
+@export var screen_overlay: ColorRect
 
 var delayed_customers: Array[Order]
 var customer_orders: Array[Order]
@@ -21,6 +24,8 @@ func _ready() -> void:
 	customer_screen.show()
 	interior.hide()
 	shop_button.pressed.connect(go_to_shop)
+	screen_overlay.custom_minimum_size = get_viewport_rect().size
+	screen_overlay.color = Color(0, 0, 0, 0)
 	add_order()
 
 
@@ -51,12 +56,29 @@ func print_orders() -> void:
 
 
 func go_to_shop() -> void:
+	await start_scene_transition()
 	customer_screen.hide()
 	interior.show()
 	interior_camera.enabled = true
+	screen_overlay.position = interior_camera.position * interior.position
+	finish_scene_transition()
 
 
 func go_to_customer_screen() -> void:
+	await start_scene_transition()
 	customer_screen.show()
 	interior.hide()
 	interior_camera.enabled = false
+	screen_overlay.position = Vector2(0, 0)
+	finish_scene_transition()
+
+
+func start_scene_transition() -> void:
+	var tween: Tween = create_tween()
+	tween.tween_property(screen_overlay, "color", Color(0, 0, 0, 1), FADE_DURATION_SECS / 2)
+	await tween.step_finished
+
+
+func finish_scene_transition() -> void:
+	var tween: Tween = create_tween()
+	tween.tween_property(screen_overlay, "color", Color(0, 0, 0, 0), FADE_DURATION_SECS / 2)
