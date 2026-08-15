@@ -24,6 +24,7 @@ var character_handed_to := 0
 var percent_cooked_furthest_from_100 := 0 # ADD BEFORE DEMO!
 var day_finished := 0 #true if equals to 1
 var start = 1
+var next_customer_served_in_line := 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	start_menu.show()
