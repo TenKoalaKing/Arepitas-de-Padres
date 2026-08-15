@@ -18,6 +18,10 @@ const FADE_DURATION_SECS: float = 0.5
 
 var delayed_customers: Array[Order]
 var customer_orders: Array[Order]
+#customer section!!!!!!!!!!!!
+var character_type := 0
+var character_handed_to := 0
+var percent_cooked_furthest_from_100 := 0 # ADD BEFORE DEMO!
 
 
 # Called when the node enters the scene tree for the first time.
@@ -43,7 +47,7 @@ func _input(event: InputEvent) -> void:
 				go_to_customer_screen()
 
 
-func add_order() -> void:
+func add_order() -> void: #character_handed_to
 	if customer_orders.size() == MAX_CUSTOMER_COUNT:
 		delayed_customers.append(Order.new(1))
 	else:

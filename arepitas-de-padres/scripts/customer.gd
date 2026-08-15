@@ -58,6 +58,7 @@ func _process(_delta: float) -> void:
 				play("customer_satisfied")
 			var n when n > 3:
 				play("dissatissfied")
+		dissastissfaction = 0
 		
 		
 		

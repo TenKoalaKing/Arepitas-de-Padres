@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://r7401yc8snb8" path="res://assets/customer_extremely_satissfied.png" id="4_pk6lr"]
 [ext_resource type="Texture2D" uid="uid://dfugyym4l1exr" path="res://assets/customer_hungry.png" id="5_pm32s"]
 [ext_resource type="Texture2D" uid="uid://gg1o8g5gbpte" path="res://assets/customer_hungry_impatient.png" id="6_t2aad"]
+[ext_resource type="Script" uid="uid://b4k53dqji7rev" path="res://scripts/customer.gd" id="7_qj8gj"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ivote"]
 animations = [{
@@ -58,6 +59,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" unique_id=478099786]
+[node name="customer" type="AnimatedSprite2D" unique_id=478099786]
 sprite_frames = SubResource("SpriteFrames_ivote")
-animation = &"hungry"
+animation = &"customer_satissfied"
+script = ExtResource("7_qj8gj")

@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://1807vpnu2pxk" path="res://assets/shop.png" id="3_iywne"]
 [ext_resource type="Theme" uid="uid://cpkj75gi22kfo" path="res://themes/hidden_button.tres" id="4_p57ef"]
 [ext_resource type="Texture2D" uid="uid://3y0c7by7k5iu" path="res://assets/planks.png" id="5_iywne"]
+[ext_resource type="PackedScene" uid="uid://d1f0ranm0xppj" path="res://scenes/customer.tscn" id="6_gee14"]
 [ext_resource type="Script" uid="uid://tqvfdny6tgyt" path="res://scripts/scroll_camera.gd" id="6_p57ef"]
 [ext_resource type="Texture2D" uid="uid://dj332yj5w0qsc" path="res://assets/grass.png" id="7_u5sy4"]
 
@@ -22,6 +23,7 @@ interior_camera = NodePath("Interior/ScrollCamera")
 screen_overlay = NodePath("ScreenOverlay")
 
 [node name="StartMenu" type="Control" parent="." unique_id=1883207886]
+visible = false
 custom_minimum_size = Vector2(1152, 648)
 layout_mode = 3
 anchors_preset = 0
@@ -47,7 +49,6 @@ theme = SubResource("Theme_g4v7s")
 text = "Start"
 
 [node name="CustomerScreen" type="Sprite2D" parent="." unique_id=887994028]
-visible = false
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("2_lbhrr")
 centered = false
@@ -63,6 +64,56 @@ offset_top = -1269.9998
 offset_right = 2739.9993
 offset_bottom = 1399.9998
 theme = ExtResource("4_p57ef")
+
+[node name="Node" type="Node" parent="CustomerScreen" unique_id=1119747611]
+
+[node name="customer" parent="CustomerScreen/Node" unique_id=478099786 instance=ExtResource("6_gee14")]
+position = Vector2(344, 425)
+scale = Vector2(0.20740741, 0.22864585)
+game_path = NodePath("../../..")
+character_num = 1
+
+[node name="customer2" parent="CustomerScreen/Node" unique_id=154362719 instance=ExtResource("6_gee14")]
+position = Vector2(344, 425)
+scale = Vector2(0.20740741, 0.22864585)
+game_path = NodePath("../../..")
+character_num = 2
+
+[node name="customer3" parent="CustomerScreen/Node" unique_id=1728401340 instance=ExtResource("6_gee14")]
+position = Vector2(344, 425)
+scale = Vector2(0.20740741, 0.22864585)
+game_path = NodePath("../../..")
+character_num = 3
+
+[node name="customer4" parent="CustomerScreen/Node" unique_id=1674950821 instance=ExtResource("6_gee14")]
+position = Vector2(344, 425)
+scale = Vector2(0.20740741, 0.22864585)
+game_path = NodePath("../../..")
+character_num = 4
+
+[node name="customer5" parent="CustomerScreen/Node" unique_id=1396282410 instance=ExtResource("6_gee14")]
+position = Vector2(344, 425)
+scale = Vector2(0.20740741, 0.22864585)
+game_path = NodePath("../../..")
+character_num = 5
+
+[node name="customer6" parent="CustomerScreen/Node" unique_id=1735839309 instance=ExtResource("6_gee14")]
+position = Vector2(344, 425)
+scale = Vector2(0.20740741, 0.22864585)
+game_path = NodePath("../../..")
+character_num = 6
+
+[node name="customer7" parent="CustomerScreen/Node" unique_id=1698622451 instance=ExtResource("6_gee14")]
+position = Vector2(344, 425)
+scale = Vector2(0.20740741, 0.22864585)
+game_path = NodePath("../../..")
+character_num = 7
+
+[node name="customer8" parent="CustomerScreen/Node" unique_id=1934342146 instance=ExtResource("6_gee14")]
+position = Vector2(344, 425)
+scale = Vector2(0.20740741, 0.22864585)
+game_path = NodePath("../../..")
+character_num = 8
 
 [node name="Interior" type="Sprite2D" parent="." unique_id=218149925]
 visible = false
