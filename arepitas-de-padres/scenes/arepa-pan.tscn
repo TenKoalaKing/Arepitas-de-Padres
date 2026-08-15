@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://buighajy6ivah"]
+
+[ext_resource type="PackedScene" uid="uid://bog6aj1ljwier" path="res://scenes/arepita_movement.tscn" id="1_rldnp"]
+[ext_resource type="PackedScene" uid="uid://c88nwp2dqev3x" path="res://scenes/pan.tscn" id="2_rw7qq"]
+
+[node name="ArepaPan" type="Node2D" unique_id=1390656231]
+
+[node name="Pan" parent="." unique_id=795190046 node_paths=PackedStringArray("target_arepa") instance=ExtResource("2_rw7qq")]
+target_arepa = NodePath("../Area2D")
+
+[node name="Area2D" parent="." unique_id=1570155796 node_paths=PackedStringArray("pan_target") instance=ExtResource("1_rldnp")]
+collision_layer = 9
+pan_target = NodePath("../Pan")

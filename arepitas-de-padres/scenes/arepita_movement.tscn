@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://bog6aj1ljwier"]
+
+[ext_resource type="Script" uid="uid://br6kngpeud1ia" path="res://scripts/area_2d.gd" id="1_87xoe"]
+[ext_resource type="Texture2D" uid="uid://bj2w6amkx6elf" path="res://assets/single_arepa.png" id="2_6kf87"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ndne8"]
+radius = 248.27808
+
+[node name="Area2D" type="Area2D" unique_id=1570155796 node_paths=PackedStringArray("pan_target")]
+scale = Vector2(0.645, 0.645)
+script = ExtResource("1_87xoe")
+pan_target = NodePath(".")
+
+[node name="normalArepa" type="Sprite2D" parent="." unique_id=1123492571]
+position = Vector2(78, 38)
+rotation = -1.548107
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_6kf87")
+
+[node name="burningArepa" type="Sprite2D" parent="." unique_id=1808221744]
+position = Vector2(78, 38)
+rotation = -1.0890855
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_6kf87")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=837788152]
+visible = false
+position = Vector2(74.41859, 38.759678)
+shape = SubResource("CircleShape2D_ndne8")
+
+[node name="Timer" type="Timer" parent="." unique_id=1739396232]
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

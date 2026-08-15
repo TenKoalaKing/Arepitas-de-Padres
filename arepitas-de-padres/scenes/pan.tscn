@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://c88nwp2dqev3x"]
+
+[ext_resource type="Script" uid="uid://bunbxdpln5h5t" path="res://scripts/pan.gd" id="1_bkvwt"]
+[ext_resource type="Texture2D" uid="uid://xnl635e8xhoy" path="res://assets/silver_palm.png" id="2_yxv2b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ivfug"]
+size = Vector2(3605.9866, 2138.0244)
+
+[node name="Pan" type="Node2D" unique_id=795190046]
+position = Vector2(544, 395)
+scale = Vector2(0.1, 0.1)
+script = ExtResource("1_bkvwt")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=716697312]
+position = Vector2(-380, -330)
+scale = Vector2(0.735, 0.735)
+texture = ExtResource("2_yxv2b")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1282022298]
+position = Vector2(-209.99991, 2020)
+rotation = 5.6138105
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1415386379]
+position = Vector2(1433.2643, -2117.6292)
+rotation = -0.9122936
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_ivfug")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1381832282]
+
+[node name="TimerText" type="Label" parent="CanvasLayer" unique_id=183233651]
+offset_left = 424.0
+offset_top = 575.0
+offset_right = 2454.0
+offset_bottom = 1025.0001
+
+[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

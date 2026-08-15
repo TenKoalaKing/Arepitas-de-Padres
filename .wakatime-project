@@ -1,0 +1,6 @@
+* Hide arrowheads only on open/plain lines (link-base) */
+.markdown-rendered .mermaid svg [id^="flowchart-pointEnd"][id*="link-base"],
+.markdown-rendered .mermaid svg [id^="flowchart-pointStart"][id*="link-base"] {
+    display: none !important;
+}
+papas-arepitas
