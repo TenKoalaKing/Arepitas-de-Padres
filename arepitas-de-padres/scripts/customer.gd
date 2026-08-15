@@ -19,19 +19,21 @@ var dissastissfaction := 0.0 #maintaining level of dissatisfaction
 var waiting := 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass 
+	#self.hide()
+	pass
 
 
 func _process(_delta: float) -> void:
 	next_character = character_num
 	if character_num == next_character and character_not_active == 1:
+		self.show()
 		character_type = game_script.character_type
 		character_not_active = 0
 		play("hungry") #then teleport it to game and make it walk to the stand
-
-	if Input.is_action_pressed("interact"):
-		interact_local = 1
-		hungry_impatient_timer()
+		#uncomment after demo
+	#if Input.is_action_pressed("interact"):
+	#	interact_local = 1
+	#	hungry_impatient_timer()
 	character_handed_to = game_script.character_handed_to
 	if character_handed_to == character_num and character_handed_to_finished != 1: # add one sec delay before deleting this value from game script
 		character_handed_to_finished = 1
@@ -59,6 +61,7 @@ func _process(_delta: float) -> void:
 			var n when n > 3:
 				play("dissatissfied")
 		dissastissfaction = 0
+		self.hide()
 		
 		
 		

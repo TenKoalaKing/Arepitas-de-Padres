@@ -60,6 +60,8 @@ animations = [{
 }]
 
 [node name="customer" type="AnimatedSprite2D" unique_id=478099786]
+position = Vector2(2, -9)
 sprite_frames = SubResource("SpriteFrames_ivote")
-animation = &"customer_satissfied"
+animation = &"hunugry_impatient"
+frame_progress = 0.5991236
 script = ExtResource("7_qj8gj")

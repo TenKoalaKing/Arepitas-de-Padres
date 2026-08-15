@@ -23,7 +23,7 @@ var character_type := 0
 var character_handed_to := 0
 var percent_cooked_furthest_from_100 := 0 # ADD BEFORE DEMO!
 var day_finished := 0 #true if equals to 1
-
+var start = 1
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	start_menu.show()
@@ -48,12 +48,24 @@ func _input(event: InputEvent) -> void:
 
 
 func add_order() -> void: #character_handed_to
+	if start == 1:
+		start = 0
+		customer_orders.append(Order.new(1))
 	if customer_orders.size() == MAX_CUSTOMER_COUNT:
 		delayed_customers.append(Order.new(1))
 	else:
 		customer_orders.append(Order.new(1))
 	character_handed_to = customer_orders.size()
 	if character_handed_to != 0:
+		#344.0, 425.0
+		while $CustomerScreen/Node/customer.position.x > 344 and $CustomerScreen/Node/customer.position.y > 425:
+			if $CustomerScreen/Node/customer.position.x > 344:
+				$CustomerScreen/Node/customer.position.x -= 3*randf()
+			if $CustomerScreen/Node/customer.position.y > 425:
+				$CustomerScreen/Node/customer.position.y -= 1.5*randf()
+			await wait_time(0.015)
+
+			
 		await wait_time(1)
 		character_handed_to = 0
 	var cool_down_secs = randf_range(MIN_CUSTOMER_COOL_DOWN_SECS, MAX_CUSTOMER_COOL_DOWN_SECS)
