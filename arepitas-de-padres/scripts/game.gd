@@ -27,14 +27,13 @@ func _ready() -> void:
 	interior.hide()
 	
 	start_button.pressed.connect(go_to_customer_screen)
+	start_button.pressed.connect(add_order)
 	shop_button.pressed.connect(go_to_shop)
 	
 	start_menu.custom_minimum_size = get_viewport_rect().size
 	screen_overlay.custom_minimum_size = get_viewport_rect().size
 	
 	screen_overlay.color = Color(0, 0, 0, 0)
-	
-	add_order()
 
 
 func _input(event: InputEvent) -> void:
