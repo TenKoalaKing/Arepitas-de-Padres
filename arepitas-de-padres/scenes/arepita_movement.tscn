@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bog6aj1ljwier"]
+
+[ext_resource type="Script" uid="uid://br6kngpeud1ia" path="res://area_2d.gd" id="1_87xoe"]
+[ext_resource type="Texture2D" uid="uid://bj2w6amkx6elf" path="res://assets/single_arepa.png" id="2_6kf87"]
+[ext_resource type="Texture2D" uid="uid://d1mp2sgdvr60p" path="res://assets/thefted_logo.png" id="3_uy5ro"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ndne8"]
+radius = 248.27808
+
+[node name="Area2D" type="Area2D" unique_id=1570155796]
+scale = Vector2(0.645, 0.645)
+script = ExtResource("1_87xoe")
+
+[node name="normalArepa" type="Sprite2D" parent="." unique_id=1123492571]
+position = Vector2(78, 38)
+rotation = -0.031495333
+texture = ExtResource("2_6kf87")
+
+[node name="burningArepa" type="Sprite2D" parent="." unique_id=1808221744]
+position = Vector2(78, 38)
+rotation = -0.031495333
+texture = ExtResource("3_uy5ro")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=837788152]
+position = Vector2(72, 40)
+rotation = -8.534838
+shape = SubResource("CircleShape2D_ndne8")
+
+[node name="Timer" type="Timer" parent="." unique_id=1739396232]
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

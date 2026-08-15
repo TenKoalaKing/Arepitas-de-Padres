@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Arepitas de Padres"
+run/main_scene="uid://b402vmixvkm4m"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="uid://d1mp2sgdvr60p"
 

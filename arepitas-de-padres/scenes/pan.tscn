@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://c88nwp2dqev3x"]
+
+[ext_resource type="Script" uid="uid://bunbxdpln5h5t" path="res://scenes/pan.gd" id="1_bkvwt"]
+[ext_resource type="Texture2D" uid="uid://xnl635e8xhoy" path="res://assets/silver_palm.png" id="2_yxv2b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ivfug"]
+size = Vector2(5030.314, 2893.5244)
+
+[node name="Pan" type="Node2D" unique_id=795190046]
+position = Vector2(585, 352)
+scale = Vector2(0.1, 0.1)
+script = ExtResource("1_bkvwt")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=716697312]
+texture = ExtResource("2_yxv2b")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1282022298]
+rotation = 5.6138105
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1415386379]
+position = Vector2(134.42572, -312.06842)
+rotation = -0.9122937
+shape = SubResource("RectangleShape2D_ivfug")
+
+[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
