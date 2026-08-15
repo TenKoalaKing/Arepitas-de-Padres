@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://cnyxi8ql8u01a"]
+
+[ext_resource type="Texture2D" uid="uid://ds6vh3n0t0qhp" path="res://assets/speech_bubble.png" id="1_2agik"]
+[ext_resource type="Script" uid="uid://8hqie00jk4wn" path="res://scripts/interact.gd" id="1_b1101"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ivote"]
+size = Vector2(1913, 1325)
+
+[node name="interact" type="Node2D" unique_id=41222171]
+scale = Vector2(0.22, 0.22)
+script = ExtResource("1_b1101")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1837659390]
+texture = ExtResource("1_2agik")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Sprite2D" unique_id=1051084877]
+custom_minimum_size = Vector2(550, 140)
+offset_left = -264.0
+offset_top = -163.0
+offset_right = 286.0
+offset_bottom = -23.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 52
+theme_override_font_sizes/bold_font_size = 40
+text = "To Interact, Press \"F\""
+fit_content = true
+scroll_active = false
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2125377566]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2022236044]
+position = Vector2(458.5, 186.5)
+shape = SubResource("RectangleShape2D_ivote")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
