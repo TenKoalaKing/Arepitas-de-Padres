@@ -63,5 +63,5 @@ animations = [{
 position = Vector2(2, -9)
 sprite_frames = SubResource("SpriteFrames_ivote")
 animation = &"hunugry_impatient"
-frame_progress = 0.5991236
+frame_progress = 0.33201784
 script = ExtResource("7_qj8gj")
