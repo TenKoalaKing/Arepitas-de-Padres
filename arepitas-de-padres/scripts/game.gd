@@ -22,7 +22,7 @@ var customer_orders: Array[Order]
 var character_type := 0
 var character_handed_to := 0
 var percent_cooked_furthest_from_100 := 0 # ADD BEFORE DEMO!
-
+var day_finished := 0 #true if equals to 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -52,11 +52,15 @@ func add_order() -> void: #character_handed_to
 		delayed_customers.append(Order.new(1))
 	else:
 		customer_orders.append(Order.new(1))
-	
+	character_handed_to = customer_orders.size()
+	if character_handed_to != 0:
+		await wait_time(1)
+		character_handed_to = 0
 	var cool_down_secs = randf_range(MIN_CUSTOMER_COOL_DOWN_SECS, MAX_CUSTOMER_COOL_DOWN_SECS)
 	var timer: SceneTreeTimer = get_tree().create_timer(cool_down_secs)
-	timer.timeout.connect(add_order)
-	print_orders()
+	if day_finished != 1:
+		timer.timeout.connect(add_order)
+		print_orders()
 
 
 func print_orders() -> void:
@@ -95,3 +99,16 @@ func start_scene_transition() -> void:
 func finish_scene_transition() -> void:
 	var tween: Tween = create_tween()
 	tween.tween_property(screen_overlay, "color", Color(0, 0, 0, 0), FADE_DURATION_SECS / 2)
+
+
+
+
+
+func wait_time(seconds: float) -> void:
+	var timer = Timer.new()
+	timer.wait_time = seconds
+	timer.one_shot = true
+	add_child(timer)
+	timer.start()
+	await timer.timeout
+	timer.queue_free()
