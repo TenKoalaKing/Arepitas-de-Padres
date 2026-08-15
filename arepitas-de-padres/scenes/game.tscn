@@ -7,21 +7,25 @@
 [ext_resource type="Texture2D" uid="uid://3y0c7by7k5iu" path="res://assets/planks.png" id="5_iywne"]
 [ext_resource type="Script" uid="uid://tqvfdny6tgyt" path="res://scripts/scroll_camera.gd" id="6_p57ef"]
 
-[node name="Game" type="Node2D" unique_id=255140021]
+[node name="Game" type="Node2D" unique_id=255140021 node_paths=PackedStringArray("customer_screen", "interior", "interior_camera", "shop_button")]
 script = ExtResource("1_uwrxv")
+customer_screen = NodePath("CustomerScreen")
+interior = NodePath("Interior")
+interior_camera = NodePath("Interior/ScrollCamera")
+shop_button = NodePath("CustomerScreen/Shop/ShopButton")
 
-[node name="CustomerScreenBg" type="Sprite2D" parent="." unique_id=887994028]
+[node name="CustomerScreen" type="Sprite2D" parent="." unique_id=887994028]
 visible = false
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("2_lbhrr")
 centered = false
 
-[node name="Shop" type="Sprite2D" parent="CustomerScreenBg" unique_id=47308691]
+[node name="Shop" type="Sprite2D" parent="CustomerScreen" unique_id=47308691]
 position = Vector2(991.6666, 736.6666)
 scale = Vector2(0.16666667, 0.16666667)
 texture = ExtResource("3_iywne")
 
-[node name="ShopHitBox" type="Button" parent="CustomerScreenBg/Shop" unique_id=1953735345]
+[node name="ShopButton" type="Button" parent="CustomerScreen/Shop" unique_id=1953735345]
 offset_left = -2169.9998
 offset_top = -1269.9998
 offset_right = 2739.9993
@@ -35,6 +39,7 @@ centered = false
 
 [node name="ScrollCamera" type="Camera2D" parent="Interior" unique_id=1334660153 node_paths=PackedStringArray("bounding_sprite")]
 anchor_mode = 0
+enabled = false
 script = ExtResource("6_p57ef")
 scroll_h = true
 bounding_sprite = NodePath("..")
