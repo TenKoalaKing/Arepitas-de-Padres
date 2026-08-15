@@ -6,14 +6,45 @@
 [ext_resource type="Theme" uid="uid://cpkj75gi22kfo" path="res://themes/hidden_button.tres" id="4_p57ef"]
 [ext_resource type="Texture2D" uid="uid://3y0c7by7k5iu" path="res://assets/planks.png" id="5_iywne"]
 [ext_resource type="Script" uid="uid://tqvfdny6tgyt" path="res://scripts/scroll_camera.gd" id="6_p57ef"]
+[ext_resource type="Texture2D" uid="uid://dj332yj5w0qsc" path="res://assets/grass.png" id="7_u5sy4"]
 
-[node name="Game" type="Node2D" unique_id=255140021 node_paths=PackedStringArray("customer_screen", "interior", "interior_camera", "shop_button", "screen_overlay")]
+[sub_resource type="Theme" id="Theme_g4v7s"]
+Button/font_sizes/font_size = 36
+
+[node name="Game" type="Node2D" unique_id=255140021 node_paths=PackedStringArray("start_menu", "customer_screen", "interior", "start_button", "shop_button", "interior_camera", "screen_overlay")]
 script = ExtResource("1_uwrxv")
+start_menu = NodePath("StartMenu")
 customer_screen = NodePath("CustomerScreen")
 interior = NodePath("Interior")
-interior_camera = NodePath("Interior/ScrollCamera")
+start_button = NodePath("StartMenu/StartButton")
 shop_button = NodePath("CustomerScreen/Shop/ShopButton")
+interior_camera = NodePath("Interior/ScrollCamera")
 screen_overlay = NodePath("ScreenOverlay")
+
+[node name="StartMenu" type="Control" parent="." unique_id=1883207886]
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="StartMenuBG" type="Sprite2D" parent="StartMenu" unique_id=462032291]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("7_u5sy4")
+centered = false
+
+[node name="StartButton" type="Button" parent="StartMenu" unique_id=810280379]
+custom_minimum_size = Vector2(250, 75)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_g4v7s")
+text = "Start"
 
 [node name="CustomerScreen" type="Sprite2D" parent="." unique_id=887994028]
 visible = false
@@ -34,6 +65,7 @@ offset_bottom = 1399.9998
 theme = ExtResource("4_p57ef")
 
 [node name="Interior" type="Sprite2D" parent="." unique_id=218149925]
+visible = false
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("5_iywne")
 centered = false
