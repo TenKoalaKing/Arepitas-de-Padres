@@ -29,13 +29,6 @@ func _ready() -> void:
 	start_menu.show()
 	customer_screen.hide()
 	interior.hide()
-	$CustomerScreen/Node/customer2.hide()
-	$CustomerScreen/Node/customer3.hide()
-	$CustomerScreen/Node/customer4.hide()
-	$CustomerScreen/Node/customer5.hide()
-	$CustomerScreen/Node/customer6.hide()
-	$CustomerScreen/Node/customer7.hide()
-	$CustomerScreen/Node/customer8.hide()
 	
 	start_button.pressed.connect(go_to_customer_screen)
 	start_button.pressed.connect(add_order)
@@ -109,9 +102,7 @@ func go_to_customer_screen() -> void:
 	interior_camera.enabled = false
 	screen_overlay.position = Vector2(0, 0)
 	finish_scene_transition()
-func _process(_delta: float) -> void:
-	if customer_screen.visible == true:
-		$CustomerScreen/Node/customer.hide()
+
 
 func start_scene_transition() -> void:
 	var tween: Tween = create_tween()
