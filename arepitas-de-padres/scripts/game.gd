@@ -31,7 +31,8 @@ var customer_exit_var := 0
 var ready_to_order := 0 # set to 0 in customer.gd
 var previous_order_count := 0
 var customer_orders: Array[Order] = []
-
+var fillings_used_1 := 0
+var fillings_used_2 := 0
 
 func _ready() -> void:
 	for i in range(8):

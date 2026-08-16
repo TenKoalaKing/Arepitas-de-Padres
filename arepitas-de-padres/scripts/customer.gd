@@ -3,6 +3,8 @@ extends AnimatedSprite2D
 @onready var game_script = get_node(game_path)
 @export var character_num := 0
 var rng = RandomNumberGenerator.new()
+@export var speech_path:NodePath
+@onready var speech = get_node(game_path)
 var next_character := 0
 var percent_differential := 20 # change to 0 after finished with character select script!
 var character_type  := 0
@@ -18,6 +20,9 @@ var extremely_satisfied_high_time := 12
 var dissastissfaction := 0.0 #maintaining level of dissatisfaction
 var waiting := 0
 var supa_hungry := 0
+var next_customer_served_in_line := 0
+var fillings_used_1 := 0
+var fillings_used_2 := 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#self.hide()
@@ -25,12 +30,18 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
+	fillings_used_1 = game_script.fillings_used_1
+	fillings_used_2 = game_script.fillings_used_2
+	speech.hide()
 	next_character = character_num
+	next_customer_served_in_line = game_script.next_customer_served_in_line
 	if character_num == next_character and character_not_active == 1:
 		self.show()
 		character_type = game_script.character_type
 		character_not_active = 0
 		play("hungry") #then teleport it to game and make it walk to the stand
+	if next_customer_served_in_line == character_num:
+		speech_bubble()
 	character_handed_to = game_script.character_handed_to
 	if character_handed_to == character_num and character_handed_to_finished != 1: # add one sec delay before deleting this value from game script
 		character_handed_to_finished = 1
@@ -65,7 +76,30 @@ func _process(_delta: float) -> void:
 		supa_hungry = 0
 		
 		
-		
+func speech_bubble():
+	speech.show()
+	match fillings_used_1:
+		1: 
+			speech.play("cheese")
+		2: 
+			speech.play("beef")
+		3: 
+			speech.play("chicken")
+		4: 
+			speech.play("bacon")
+		5: 
+			speech.play("little_corn")
+	match fillings_used_2:
+		1: 
+			speech.play("cheese")
+		2: 
+			speech.play("beef")
+		3: 
+			speech.play("chicken")
+		4: 
+			speech.play("bacon")
+		5: 
+			speech.play("little_corn")
 
 
 func hungry_impatient_timer():

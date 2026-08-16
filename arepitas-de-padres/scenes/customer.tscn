@@ -7,6 +7,12 @@
 [ext_resource type="Texture2D" uid="uid://dfugyym4l1exr" path="res://assets/customer_hungry.png" id="5_pm32s"]
 [ext_resource type="Texture2D" uid="uid://gg1o8g5gbpte" path="res://assets/customer_hungry_impatient.png" id="6_t2aad"]
 [ext_resource type="Script" uid="uid://b4k53dqji7rev" path="res://scripts/customer.gd" id="7_qj8gj"]
+[ext_resource type="Texture2D" uid="uid://bncnb6hypyomb" path="res://assets/saying_bubble.png" id="8_w2wat"]
+[ext_resource type="Texture2D" uid="uid://cgfaxqly2tsjw" path="res://assets/616.png" id="9_r88ql"]
+[ext_resource type="Texture2D" uid="uid://bcbxv2sobbx1o" path="res://assets/614.png" id="10_02a8g"]
+[ext_resource type="Texture2D" uid="uid://dtm3gy6dvq03g" path="res://assets/613.png" id="11_0m07s"]
+[ext_resource type="Texture2D" uid="uid://bs7q4iks7trs8" path="res://assets/615.png" id="12_y3ht7"]
+[ext_resource type="Texture2D" uid="uid://ddpyv31ft3edw" path="res://assets/620.png" id="13_lhulq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ivote"]
 animations = [{
@@ -59,17 +65,70 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_nehqj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_r88ql")
+}],
+"loop": 1,
+"name": &"bacon",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_02a8g")
+}],
+"loop": 1,
+"name": &"beef",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_0m07s")
+}],
+"loop": 1,
+"name": &"cheese",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_y3ht7")
+}],
+"loop": 1,
+"name": &"chicken",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_lhulq")
+}],
+"loop": 1,
+"name": &"little_corn",
+"speed": 5.0
+}]
+
 [node name="customer" type="AnimatedSprite2D" unique_id=478099786]
 position = Vector2(2, -9)
 sprite_frames = SubResource("SpriteFrames_ivote")
 animation = &"hunugry_impatient"
 frame_progress = 0.55614686
 script = ExtResource("7_qj8gj")
+speech_path = NodePath("speeeeeeeeeeech")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1523422555]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1874052883]
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1180064721]
+[node name="speeeeeeeeeeech" type="Sprite2D" parent="." unique_id=1180064721]
+texture = ExtResource("8_w2wat")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="speeeeeeeeeeech" unique_id=434914044]
+sprite_frames = SubResource("SpriteFrames_nehqj")
+animation = &"bacon"
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="speeeeeeeeeeech" unique_id=745778851]
+sprite_frames = SubResource("SpriteFrames_nehqj")
+animation = &"cheese"
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
