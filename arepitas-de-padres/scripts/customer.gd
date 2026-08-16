@@ -42,7 +42,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	fillings_used_1 = game_script.fillings_used_1
 	fillings_used_2 = game_script.fillings_used_2
-	speech.hide()
+	#speech.hide()
 	next_character = character_num
 	next_customer_served_in_line = game_script.next_customer_served_in_line
 	if character_num == next_character and character_not_active == 1:
