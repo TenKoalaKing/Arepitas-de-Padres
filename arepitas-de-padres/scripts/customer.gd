@@ -5,6 +5,10 @@ const Filling = ArepaData.Filling
 @export var game_path:NodePath
 @onready var game_script = get_node(game_path)
 @export var character_num := 0
+@export var one_path:NodePath
+@onready var onef = get_node(one_path)
+@export var two_path:NodePath
+@onready var twof = get_node(two_path)
 var rng = RandomNumberGenerator.new()
 @export var speech_path:NodePath
 @onready var speech = get_node(game_path)
@@ -24,8 +28,15 @@ var dissastissfaction := 0.0 #maintaining level of dissatisfaction
 var waiting := 0
 var supa_hungry := 0
 var next_customer_served_in_line := 0
+<<<<<<< Updated upstream
 var fillings_used_1 := Filling.NONE
 var fillings_used_2 := Filling.NONE
+=======
+var fillings_used_1 := 0
+var fillings_used_2 := 0
+var fillings_used_3 := 0
+var fillings_used_4 := 0
+>>>>>>> Stashed changes
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#self.hide()
@@ -83,26 +94,49 @@ func speech_bubble():
 	speech.show()
 	match fillings_used_1:
 		1: 
-			speech.play("cheese")
+			onef.play("cheese")
 		2: 
-			speech.play("beef")
+			onef.play("beef")
 		3: 
-			speech.play("chicken")
+			onef.play("chicken")
 		4: 
-			speech.play("bacon")
+			onef.play("bacon")
 		5: 
-			speech.play("little_corn")
+			onef.play("little_corn")
 	match fillings_used_2:
 		1: 
-			speech.play("cheese")
+			twof.play("cheese")
 		2: 
-			speech.play("beef")
+			twof.play("beef")
 		3: 
-			speech.play("chicken")
+			twof.play("chicken")
 		4: 
-			speech.play("bacon")
+			twof.play("bacon")
 		5: 
-			speech.play("little_corn")
+			twof.play("little_corn")
+	await wait_time(3)
+	match fillings_used_3:
+		1: 
+			onef.play("cheese")
+		2: 
+			onef.play("beef")
+		3: 
+			onef.play("chicken")
+		4: 
+			onef.play("bacon")
+		5: 
+			onef.play("little_corn")
+	match fillings_used_4:
+		1: 
+			twof.play("cheese")
+		2: 
+			twof.play("beef")
+		3: 
+			twof.play("chicken")
+		4: 
+			twof.play("bacon")
+		5: 
+			twof.play("little_corn")
 
 
 func hungry_impatient_timer():

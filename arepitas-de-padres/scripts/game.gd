@@ -34,6 +34,7 @@ var customer_orders: Array[Order] = []
 var fillings_used_1 := Filling.NONE
 var fillings_used_2 := Filling.NONE
 
+
 func _ready() -> void:
 	for i in range(8):
 		customer_orders.push_back(Order.new([]))

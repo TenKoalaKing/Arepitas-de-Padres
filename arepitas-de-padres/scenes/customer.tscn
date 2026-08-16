@@ -114,6 +114,8 @@ sprite_frames = SubResource("SpriteFrames_ivote")
 animation = &"hunugry_impatient"
 frame_progress = 0.55614686
 script = ExtResource("7_qj8gj")
+one_path = NodePath("speeeeeeeeeeech/AnimatedSprite2D")
+two_path = NodePath("speeeeeeeeeeech/AnimatedSprite2D2")
 speech_path = NodePath("speeeeeeeeeeech")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1523422555]
@@ -121,13 +123,18 @@ speech_path = NodePath("speeeeeeeeeeech")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1874052883]
 
 [node name="speeeeeeeeeeech" type="Sprite2D" parent="." unique_id=1180064721]
+position = Vector2(-680, -766)
 texture = ExtResource("8_w2wat")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="speeeeeeeeeeech" unique_id=434914044]
+position = Vector2(135, -59.000008)
+scale = Vector2(0.18999998, 0.18699998)
 sprite_frames = SubResource("SpriteFrames_nehqj")
 animation = &"bacon"
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="speeeeeeeeeeech" unique_id=745778851]
+position = Vector2(150.00002, -229)
+scale = Vector2(0.15950002, 0.152)
 sprite_frames = SubResource("SpriteFrames_nehqj")
 animation = &"cheese"
 
