@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://m83dx7a4jmql" path="res://assets/board.png" id="1_vt38a"]
 [ext_resource type="Texture2D" uid="uid://cgfaxqly2tsjw" path="res://assets/616.png" id="2_iiito"]
-[ext_resource type="Script" uid="uid://c5bc1i21jeuuy" path="res://scripts/board_thingy.gd" id="2_oyv8v"]
 [ext_resource type="Texture2D" uid="uid://bcbxv2sobbx1o" path="res://assets/614.png" id="3_oyv8v"]
 [ext_resource type="Texture2D" uid="uid://dtm3gy6dvq03g" path="res://assets/613.png" id="4_svlbe"]
 [ext_resource type="Texture2D" uid="uid://bs7q4iks7trs8" path="res://assets/615.png" id="5_me57k"]
@@ -53,16 +52,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="board_thingy" type="Sprite2D" unique_id=1042858072 node_paths=PackedStringArray("customer_scripts")]
+[node name="board_thingy" type="Sprite2D" unique_id=1042858072]
 position = Vector2(4.000001, 1)
 scale = Vector2(0.34037963, 0.30624998)
 texture = ExtResource("1_vt38a")
-script = ExtResource("2_oyv8v")
-customer_scripts = [null, null, null, null, null, null, null, null, null]
-onef_path = NodePath("AnimatedSprite2D")
-twof_path = NodePath("AnimatedSprite2D2")
-threef_path = NodePath("AnimatedSprite2D3")
-fourf_path = NodePath("AnimatedSprite2D4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=304643584]
 position = Vector2(86.000015, -477.00003)

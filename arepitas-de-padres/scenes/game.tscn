@@ -18,14 +18,13 @@ Button/font_sizes/font_size = 36
 
 [sub_resource type="GDScript" id="GDScript_gee14"]
 
-[node name="Game" type="Node2D" unique_id=255140021 node_paths=PackedStringArray("start_menu", "customer_screen", "interior", "start_button", "shop_button", "interior_camera", "screen_overlay")]
+[node name="Game" type="Node2D" unique_id=255140021 node_paths=PackedStringArray("start_menu", "customer_screen", "interior", "start_button", "shop_button", "screen_overlay")]
 script = ExtResource("1_uwrxv")
 start_menu = NodePath("StartMenu")
 customer_screen = NodePath("CustomerScreen")
 interior = NodePath("Interior")
 start_button = NodePath("StartMenu/StartButton")
 shop_button = NodePath("CustomerScreen/Shop/ShopButton")
-interior_camera = NodePath("Interior/ScrollCamera")
 screen_overlay = NodePath("ScreenOverlay")
 
 [node name="StartMenu" type="Control" parent="." unique_id=1883207886]
