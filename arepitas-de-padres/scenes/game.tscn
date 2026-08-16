@@ -18,6 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://cgfaxqly2tsjw" path="res://assets/616.png" id="15_5newe"]
 [ext_resource type="Texture2D" uid="uid://bcbxv2sobbx1o" path="res://assets/614.png" id="16_37s47"]
 [ext_resource type="Texture2D" uid="uid://dtm3gy6dvq03g" path="res://assets/613.png" id="17_bt5mj"]
+[ext_resource type="AudioStream" uid="uid://bm578vh244mcv" path="res://assets/music/vallenato_eliza_music-fuego-que-nunca-acierta-461244.mp3" id="17_ssvqc"]
+[ext_resource type="AudioStream" uid="uid://b5rsap4hekftp" path="res://assets/music/vjgalaxy-salsa-estilo-new-york-03-522534.mp3" id="18_264po"]
 [ext_resource type="Texture2D" uid="uid://bs7q4iks7trs8" path="res://assets/615.png" id="18_e1j6l"]
 [ext_resource type="Texture2D" uid="uid://ddpyv31ft3edw" path="res://assets/620.png" id="19_pl11u"]
 [ext_resource type="Texture2D" uid="uid://lcyd8fsgrpwm" path="res://assets/stove.png" id="20_5newe"]
@@ -320,3 +322,12 @@ texture = ExtResource("8_0tnpc")
 
 [node name="ScreenOverlay" type="ColorRect" parent="." unique_id=396238436]
 mouse_filter = 2
+
+[node name="VallenatoTrack" type="AudioStreamPlayer" parent="." unique_id=1717051783]
+stream = ExtResource("17_ssvqc")
+
+[node name="SalsaTrack" type="AudioStreamPlayer" parent="." unique_id=1489074992]
+stream = ExtResource("18_264po")
+
+[connection signal="pressed" from="StartMenu/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="CustomerScreen/Shop/ShopButton" to="." method="_on_shop_button_pressed"]
