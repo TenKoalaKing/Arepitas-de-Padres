@@ -6,8 +6,9 @@
 [ext_resource type="Theme" uid="uid://cpkj75gi22kfo" path="res://themes/hidden_button.tres" id="4_p57ef"]
 [ext_resource type="Texture2D" uid="uid://3y0c7by7k5iu" path="res://assets/planks.png" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://d1f0ranm0xppj" path="res://scenes/customer.tscn" id="6_gee14"]
-[ext_resource type="Script" uid="uid://tqvfdny6tgyt" path="res://scripts/scroll_camera.gd" id="6_p57ef"]
 [ext_resource type="Texture2D" uid="uid://dj332yj5w0qsc" path="res://assets/grass.png" id="7_u5sy4"]
+[ext_resource type="Script" uid="uid://c5bc1i21jeuuy" path="res://scripts/board_thingy.gd" id="8_0tnpc"]
+[ext_resource type="PackedScene" uid="uid://c26ejljui6cs6" path="res://scenes/board_thingy.tscn" id="9_vtaks"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_g4v7s"]
 font_size = 90
@@ -141,14 +142,12 @@ scale = Vector2(0.7, 0.7)
 texture = ExtResource("5_iywne")
 centered = false
 
-[node name="ScrollCamera" type="Camera2D" parent="Interior" unique_id=1334660153 node_paths=PackedStringArray("bounding_sprite", "screen_overlay")]
+[node name="ScrollCamera" type="Camera2D" parent="Interior" unique_id=1334660153]
 anchor_mode = 0
 enabled = false
-script = ExtResource("6_p57ef")
-scroll_h = true
-bounding_sprite = NodePath("..")
-screen_overlay = NodePath("../../ScreenOverlay")
-section_positions = Array[Vector2]([Vector2(0, 0), Vector2(583.2, 0), Vector2(1166.4, 0)])
+script = ExtResource("8_0tnpc")
+
+[node name="board_thingy" parent="Interior/ScrollCamera" unique_id=1042858072 instance=ExtResource("9_vtaks")]
 
 [node name="ScreenOverlay" type="ColorRect" parent="." unique_id=396238436]
 mouse_filter = 2
