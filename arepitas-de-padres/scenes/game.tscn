@@ -9,11 +9,13 @@
 [ext_resource type="Script" uid="uid://tqvfdny6tgyt" path="res://scripts/scroll_camera.gd" id="6_p57ef"]
 [ext_resource type="Texture2D" uid="uid://dj332yj5w0qsc" path="res://assets/grass.png" id="7_u5sy4"]
 [ext_resource type="Texture2D" uid="uid://bj2w6amkx6elf" path="res://assets/single_arepa.png" id="8_0tnpc"]
-[ext_resource type="Script" uid="uid://k6ososu73lei" path="res://scripts/arepa_source_area_2d.gd" id="9_vtaks"]
-[ext_resource type="PackedScene" uid="uid://bog6aj1ljwier" path="res://scenes/arepita_movement.tscn" id="10_kvpfn"]
-[ext_resource type="Texture2D" uid="uid://m83dx7a4jmql" path="res://assets/kneading_board.png" id="11_dinhu"]
-[ext_resource type="Script" uid="uid://dl1hlrus6457v" path="res://scripts/board_area.gd" id="12_kvuet"]
-[ext_resource type="PackedScene" uid="uid://c88nwp2dqev3x" path="res://scenes/pan.tscn" id="13_trtic"]
+[ext_resource type="PackedScene" uid="uid://c26ejljui6cs6" path="res://scenes/board_thingy.tscn" id="9_vtaks"]
+[ext_resource type="Texture2D" uid="uid://cgfaxqly2tsjw" path="res://assets/616.png" id="15_5newe"]
+[ext_resource type="Texture2D" uid="uid://bcbxv2sobbx1o" path="res://assets/614.png" id="16_37s47"]
+[ext_resource type="Texture2D" uid="uid://dtm3gy6dvq03g" path="res://assets/613.png" id="17_bt5mj"]
+[ext_resource type="Texture2D" uid="uid://bs7q4iks7trs8" path="res://assets/615.png" id="18_e1j6l"]
+[ext_resource type="Texture2D" uid="uid://ddpyv31ft3edw" path="res://assets/620.png" id="19_pl11u"]
+[ext_resource type="Texture2D" uid="uid://dsjsxgbh48o7o" path="res://assets/gdj-divider-5243609_1920.png" id="20_bhx41"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_g4v7s"]
 font_size = 90
@@ -22,11 +24,48 @@ font_color = Color(0, 0, 0, 1)
 [sub_resource type="Theme" id="Theme_g4v7s"]
 Button/font_sizes/font_size = 36
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
-radius = 247.5505
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
-size = Vector2(1680.0002, 1005.71436)
+[sub_resource type="SpriteFrames" id="SpriteFrames_ir15t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_5newe")
+}],
+"loop": 1,
+"name": &"bacon",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_37s47")
+}],
+"loop": 1,
+"name": &"beef",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_bt5mj")
+}],
+"loop": 1,
+"name": &"cheese",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_e1j6l")
+}],
+"loop": 1,
+"name": &"chicken",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_pl11u")
+}],
+"loop": 1,
+"name": &"little_corn",
+"speed": 5.0
+}]
 
 [node name="Game" type="Node2D" unique_id=255140021 node_paths=PackedStringArray("start_menu", "customer_screen", "interior", "start_button", "shop_button", "screen_overlay")]
 script = ExtResource("1_uwrxv")
@@ -38,7 +77,6 @@ shop_button = NodePath("CustomerScreen/Shop/ShopButton")
 screen_overlay = NodePath("ScreenOverlay")
 
 [node name="StartMenu" type="Control" parent="." unique_id=1883207886]
-visible = false
 custom_minimum_size = Vector2(1152, 648)
 layout_mode = 3
 anchors_preset = 0
@@ -152,60 +190,61 @@ scale = Vector2(0.7, 0.7)
 texture = ExtResource("5_iywne")
 centered = false
 
-[node name="ArepaSource" type="Sprite2D" parent="Interior" unique_id=1833513132]
-position = Vector2(210.00002, 477.14282)
-scale = Vector2(0.57142854, 0.57142854)
-texture = ExtResource("8_0tnpc")
-
-[node name="ArepaSourceArea2D" type="Area2D" parent="Interior/ArepaSource" unique_id=765057525 node_paths=PackedStringArray("interior")]
-script = ExtResource("9_vtaks")
-arepa_scene = ExtResource("10_kvpfn")
-interior = NodePath("../..")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interior/ArepaSource/ArepaSourceArea2D" unique_id=1304482635]
-shape = SubResource("CircleShape2D_g4v7s")
-
-[node name="Board" type="Sprite2D" parent="Interior" unique_id=636973533]
-position = Vector2(834.28577, 478.5714)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("11_dinhu")
-
-[node name="Area2D" type="Area2D" parent="Interior/Board" unique_id=639218466]
-script = ExtResource("12_kvuet")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interior/Board/Area2D" unique_id=626034223]
-position = Vector2(0, -5.7141724)
-shape = SubResource("RectangleShape2D_g4v7s")
-
-[node name="Pan" parent="Interior" unique_id=795190046 instance=ExtResource("13_trtic")]
-position = Vector2(1577.1428, 577.14294)
-scale = Vector2(0.15, 0.15)
-
-[node name="Pan2" parent="Interior" unique_id=1029818194 instance=ExtResource("13_trtic")]
-position = Vector2(1982.857, 577.1429)
-scale = Vector2(0.15, 0.15)
-
-[node name="Pan3" parent="Interior" unique_id=700018614 instance=ExtResource("13_trtic")]
-position = Vector2(2418.5718, 577.14294)
-scale = Vector2(0.15, 0.15)
-
-[node name="Pan4" parent="Interior" unique_id=2072097154 instance=ExtResource("13_trtic")]
-position = Vector2(2854.2856, 577.1429)
-scale = Vector2(0.15, 0.15)
-
-[node name="ScrollCamera" type="Camera2D" parent="Interior" unique_id=1334660153 node_paths=PackedStringArray("bounding_sprite", "screen_overlay")]
-position = Vector2(4.3596538e-05, 0)
-scale = Vector2(0.99999994, 0.99999994)
+[node name="ScrollCamera" type="Camera2D" parent="Interior" unique_id=1334660153 node_paths=PackedStringArray("customer_scripts")]
 anchor_mode = 0
 enabled = false
 script = ExtResource("6_p57ef")
-scroll_h = true
-bounding_sprite = NodePath("..")
-screen_overlay = NodePath("../../ScreenOverlay")
-section_positions = Array[Vector2]([Vector2(0, 0), Vector2(583.2, 0), Vector2(1166.4, 0)])
+game_path = NodePath("../..")
+customer_scripts = [NodePath("../../CustomerScreen/Node/customer"), NodePath("../../CustomerScreen/Node/customer"), NodePath("../../CustomerScreen/Node/customer2"), NodePath("../../CustomerScreen/Node/customer3"), NodePath("../../CustomerScreen/Node/customer4"), NodePath("../../CustomerScreen/Node/customer5"), NodePath("../../CustomerScreen/Node/customer6"), NodePath("../../CustomerScreen/Node/customer7"), NodePath("../../CustomerScreen/Node/customer8")]
+numberf = 1
+onef_path = NodePath("board_thingy/AnimatedSprite2D5")
+twof_path = NodePath("board_thingy/AnimatedSprite2D6")
+threef_path = NodePath("board_thingy/AnimatedSprite2D7")
+fourf_path = NodePath("board_thingy/AnimatedSprite2D8")
+
+[node name="board_thingy" parent="Interior/ScrollCamera" unique_id=1042858072 instance=ExtResource("9_vtaks")]
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="Interior/ScrollCamera/board_thingy" unique_id=1293173767]
+position = Vector2(86.000015, -477.00003)
+rotation = -0.27052602
+scale = Vector2(0.33900005, 0.35025004)
+sprite_frames = SubResource("SpriteFrames_ir15t")
+animation = &"bacon"
+
+[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="Interior/ScrollCamera/board_thingy" unique_id=1125512692]
+position = Vector2(-168.21916, -466.28613)
+rotation = -1.3421582
+scale = Vector2(0.35380653, 0.32820478)
+sprite_frames = SubResource("SpriteFrames_ir15t")
+animation = &"beef"
+
+[node name="Sprite2D3" type="Sprite2D" parent="Interior/ScrollCamera/board_thingy" unique_id=213038931]
+position = Vector2(-82.00001, -653.00006)
+scale = Vector2(0.4409091, 0.42731276)
+texture = ExtResource("8_0tnpc")
+
+[node name="L I N E2" type="Sprite2D" parent="Interior/ScrollCamera/board_thingy" unique_id=317872664]
+position = Vector2(2.4999967, -200.00003)
+scale = Vector2(0.30364585, 0.24895833)
+texture = ExtResource("20_bhx41")
+
+[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="Interior/ScrollCamera/board_thingy" unique_id=1531422176]
+position = Vector2(95.25, 136.1875)
+scale = Vector2(0.29650003, 0.38162506)
+sprite_frames = SubResource("SpriteFrames_ir15t")
+animation = &"bacon"
+
+[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="Interior/ScrollCamera/board_thingy" unique_id=1808381162]
+position = Vector2(-149.21936, 161.99133)
+rotation = -1.0838494
+scale = Vector2(0.3420354, 0.4155396)
+sprite_frames = SubResource("SpriteFrames_ir15t")
+animation = &"cheese"
+
+[node name="Sprite2D4" type="Sprite2D" parent="Interior/ScrollCamera/board_thingy" unique_id=671966019]
+position = Vector2(-33.000008, -46.00006)
+scale = Vector2(0.4409091, 0.42731276)
+texture = ExtResource("8_0tnpc")
 
 [node name="ScreenOverlay" type="ColorRect" parent="." unique_id=396238436]
 mouse_filter = 2
-
-[connection signal="area_entered" from="Interior/Board/Area2D" to="Interior/Board/Area2D" method="_on_area_entered"]
-[connection signal="area_exited" from="Interior/Board/Area2D" to="Interior/Board/Area2D" method="_on_area_exited"]
