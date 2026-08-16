@@ -111,7 +111,7 @@ game_path = NodePath("../../..")
 character_num = 7
 
 [node name="customer8" parent="CustomerScreen/Node" unique_id=1934342146 instance=ExtResource("6_gee14")]
-position = Vector2(1244, 646.5)
+position = Vector2(-123.975204, 666.86664)
 scale = Vector2(0.20740741, 0.22864585)
 game_path = NodePath("../../..")
 character_num = 8

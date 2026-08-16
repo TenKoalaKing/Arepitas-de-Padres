@@ -30,13 +30,10 @@ func _process(_delta: float) -> void:
 		character_type = game_script.character_type
 		character_not_active = 0
 		play("hungry") #then teleport it to game and make it walk to the stand
-		#uncomment after demo
-	#if Input.is_action_pressed("interact"):
-	#	interact_local = 1
-	#	hungry_impatient_timer()
 	character_handed_to = game_script.character_handed_to
 	if character_handed_to == character_num and character_handed_to_finished != 1: # add one sec delay before deleting this value from game script
 		character_handed_to_finished = 1
+		game_script.ready_to_order = 0
 		percent_cooked_furthest_from_100 = game_script.percent_cooked_furthest_from_100
 		character_not_active = 1
 		rng.randomize()
@@ -82,3 +79,8 @@ func wait_time(seconds: float) -> void:
 	timer.start()
 	await timer.timeout
 	timer.queue_free()
+
+func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+	if event is InputEventMouseButton and event.pressed:
+		interact_local = 1
+		hungry_impatient_timer()
