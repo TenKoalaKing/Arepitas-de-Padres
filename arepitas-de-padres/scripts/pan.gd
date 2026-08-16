@@ -14,7 +14,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 # @trace SREQ-001A @
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	if not target_arepa:
 		return
 	
@@ -55,7 +55,7 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 
 # @trace SREQ-001C @ 
 # Handles arepa place over a pan
-func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if not target_arepa:
 		return
 	
