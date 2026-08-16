@@ -63,10 +63,15 @@ func add_order() -> void: #character_handed_to
 		#customer_orders.append(Order.new(1))
 	#else:
 		#customer_orders.append(Order.new(1))
-	#character_handed_to = customer_orders.size() + previous_order_count #FIXIFIXIIFIXIIFIX
-	if character_handed_to != 0:
+	next_customer_served_in_line = 0
+	for i in range(8):
+		if not customer_orders[i].arepas:
+			next_customer_served_in_line = i + 1
+			break
+	
+	if next_customer_served_in_line != 0:
 		#344.0, 425.0
-		var customer: Sprite2D = customer_scripts[next_customer_served_in_line]
+		var customer: AnimatedSprite2D = customer_scripts[next_customer_served_in_line]
 		while customer.position.x > 344 and customer.position.y > 425:
 			if customer.position.x > 344:
 				customer.position.x -= 3*randf()
@@ -76,7 +81,6 @@ func add_order() -> void: #character_handed_to
 			ready_to_order = 1
 			
 		await wait_time(1)
-		character_handed_to = 0
 		
 		var arepa_1 = ArepaData.new()
 		var arepa_2 = ArepaData.new()
