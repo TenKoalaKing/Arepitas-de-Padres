@@ -28,10 +28,8 @@ goal_size_mult = 8.0
 nodes_per_side = 2
 size = Vector2(200, 200)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=837788152]
-visible = false
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="." unique_id=1793742227]
 position = Vector2(74.41859, 38.759678)
-shape = SubResource("CircleShape2D_ndne8")
 
 [node name="Timer" type="Timer" parent="." unique_id=1739396232]
 

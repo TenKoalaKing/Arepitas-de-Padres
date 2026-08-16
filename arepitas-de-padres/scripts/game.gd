@@ -33,10 +33,8 @@ var previous_order_count := 0
 var customer_orders: Array[Order] = []
 var fillings_used_1 := Filling.NONE
 var fillings_used_2 := Filling.NONE
-var fillings_used_3 := Filling.NONE
-var fillings_used_4 := Filling.NONE
-var start_walking_twords_line := 0
-var done_fundsaicnn := 0
+
+
 func _ready() -> void:
 	for i in range(8):
 		customer_orders.push_back(Order.new([]))
@@ -52,10 +50,8 @@ func _ready() -> void:
 	screen_overlay.custom_minimum_size = get_viewport_rect().size
 	
 	screen_overlay.color = Color(0, 0, 0, 0)
-func _process(_delta: float) -> void:
-	print(next_customer_served_in_line)
-	if next_customer_to_be_served == customer_scripts.find(customer_scripts[next_customer_to_be_served]) and done_fundsaicnn == 1:
-		customer_served()
+
+
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		if event.is_action_pressed("exit"):
@@ -75,17 +71,6 @@ func add_order() -> void: #character_handed_to
 			next_customer_served_in_line = i + 1
 			break
 	
-	var arepa_1 = ArepaData.new()
-	var arepa_2 = ArepaData.new()
-	
-	arepa_1.randomize_fillings()
-	arepa_2.randomize_fillings()
-	
-	fillings_used_1 = arepa_1.filling_1
-	fillings_used_2 = arepa_1.filling_2
-	fillings_used_3 = arepa_2.filling_1
-	fillings_used_4 = arepa_2.filling_2
-	
 	if next_customer_served_in_line != 0:
 		#344.0, 425.0
 		var customer: AnimatedSprite2D = customer_scripts[next_customer_served_in_line]
@@ -99,8 +84,19 @@ func add_order() -> void: #character_handed_to
 			
 		await wait_time(1)
 		
+		var arepa_1 = ArepaData.new()
+		var arepa_2 = ArepaData.new()
+		
+		arepa_1.randomize_fillings()
+		arepa_2.randomize_fillings()
+		
 		customer_orders[next_customer_served_in_line - 1].arepas.push_back(arepa_1)
 		customer_orders[next_customer_served_in_line - 1].arepas.push_back(arepa_2)
+		
+		fillings_used_1 = arepa_1.filling_1
+		fillings_used_2 = arepa_1.filling_2
+		
+		customer.speech_bubble()
 	
 	var cool_down_secs = randf_range(MIN_CUSTOMER_COOL_DOWN_SECS, MAX_CUSTOMER_COOL_DOWN_SECS)
 	var timer: SceneTreeTimer = get_tree().create_timer(cool_down_secs)
@@ -155,8 +151,6 @@ func order_taken():
 		if  customer_scripts[next_customer_served_in_line].position.y < 553:
 			print("space")
 			customer_scripts[next_customer_served_in_line].position.y += 1.5*randf()
-			next_customer_to_be_served = next_customer_served_in_line
-		done_fundsaicnn = 1
 func customer_served():
 	while customer_scripts[next_customer_to_be_served].position.x > 344: # old x: 519, 553
 		if customer_scripts[next_customer_to_be_served].position.x > 344: #REDUNDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANT!!!!!!!!!!!!!!!!!!!!!!!!!!

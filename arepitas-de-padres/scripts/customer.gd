@@ -33,8 +33,6 @@ var fillings_used_2 := 0
 var fillings_used_3 := 0
 var fillings_used_4 := 0
 var current_order := []
-var runinginign := 0
-var start_walking_twords_line := 0
 
 func _ready() -> void:
 	speech.hide()
@@ -43,17 +41,14 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	fillings_used_1 = game_script.fillings_used_1
 	fillings_used_2 = game_script.fillings_used_2
-	fillings_used_3 = game_script.fillings_used_3
-	fillings_used_4 = game_script.fillings_used_4
 	next_character = character_num
 	next_customer_served_in_line = game_script.next_customer_served_in_line
 	if character_num == next_character and character_not_active == 1:
-		self.show() 
-		speech.hide()
+		self.show()
 		character_type = game_script.character_type
 		character_not_active = 0
 		play("hungry") #then teleport it to game and make it walk to the stand
-	if next_customer_served_in_line == character_num and runinginign == 0:
+	if next_customer_served_in_line == character_num:
 		speech_bubble()
 	character_handed_to = game_script.character_handed_to
 	if character_handed_to == character_num and character_handed_to_finished != 1: # add one sec delay before deleting this value from game script
@@ -86,14 +81,11 @@ func _process(_delta: float) -> void:
 				play("dissatissfied")
 		dissastissfaction = 0
 		self.hide()
-		print("hide 1")
 		supa_hungry = 0
 		current_order = []
-		runinginign = 0
-		start_walking_twords_line = 0
+		
 		
 func speech_bubble():
-	runinginign = 1
 	speech.show()
 	match fillings_used_1:
 		1: 
@@ -153,7 +145,6 @@ func speech_bubble():
 	current_order = [fillings_used_1, fillings_used_2, fillings_used_3, fillings_used_4]
 	await wait_time(3)
 	speech.hide()
-	start_walking_twords_line = 1
 
 
 
