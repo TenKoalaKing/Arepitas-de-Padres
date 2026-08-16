@@ -13,11 +13,10 @@ const FADE_DURATION_SECS: float = 0.5
 @export var start_button: Button
 @export var shop_button: Button
 @export var interior_camera: ScrollCamera
-
 @export var screen_overlay: ColorRect
+
 var customer_scripts := [$msdfksodkfp, $CustomerScreen/Node/customer, $CustomerScreen/Node/customer2, $CustomerScreen/Node/customer3, $CustomerScreen/Node/customer4, $CustomerScreen/Node/customer5, $CustomerScreen/Node/customer6, $CustomerScreen/Node/customer7, $CustomerScreen/Node/customer8]
-var delayed_customers: Array[Order]
-var customer_orders: Array[Order]
+
 #customer section!!!!!!!!!!!!
 var character_type := 0
 var character_handed_to := 0
@@ -33,7 +32,6 @@ func _ready() -> void:
 	start_menu.show()
 	customer_screen.hide()
 	interior.hide()
-	
 	start_button.pressed.connect(go_to_customer_screen)
 	start_button.pressed.connect(add_order)
 	shop_button.pressed.connect(go_to_shop)
@@ -54,12 +52,10 @@ func _input(event: InputEvent) -> void:
 func add_order() -> void: #character_handed_to
 	if start == 1:
 		start = 0
-		customer_orders.append(Order.new(1))
-	if customer_orders.size() == MAX_CUSTOMER_COUNT:
-		delayed_customers.append(Order.new(1))
-	else:
-		customer_orders.append(Order.new(1))
-	character_handed_to = customer_orders.size() + previous_order_count
+		#customer_orders.append(Order.new(1))
+	#else:
+		#customer_orders.append(Order.new(1))
+	#character_handed_to = customer_orders.size() + previous_order_count #FIXIFIXIIFIXIIFIX
 	if character_handed_to != 0:
 		#344.0, 425.0
 		match next_customer_served_in_line:
@@ -139,8 +135,8 @@ func add_order() -> void: #character_handed_to
 
 func print_orders() -> void:
 	print("Orders:")
-	for customer_order in customer_orders:
-		print("Order: %s arepas" % customer_order.arepa_count)
+	#for customer_order in customer_orders:
+	#	print("Order: %s arepas" % customer_order.arepa_count)
 	print("")
 
 

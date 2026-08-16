@@ -17,6 +17,7 @@ var very_satissfied_high_time := 20
 var extremely_satisfied_high_time := 12
 var dissastissfaction := 0.0 #maintaining level of dissatisfaction
 var waiting := 0
+var supa_hungry := 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#self.hide()
@@ -48,6 +49,8 @@ func _process(_delta: float) -> void:
 			dissastissfaction += 1
 		if percent_differential > 2 * percent_cooked_furthest_from_100:
 			dissastissfaction += 2
+		if supa_hungry == 1:
+			dissastissfaction += .25
 		match dissastissfaction:
 			var n when n <= 1:
 				play("extremely_satissfied")
@@ -59,6 +62,7 @@ func _process(_delta: float) -> void:
 				play("dissatissfied")
 		dissastissfaction = 0
 		self.hide()
+		supa_hungry = 0
 		
 		
 		
@@ -69,6 +73,7 @@ func hungry_impatient_timer():
 	await wait_time(60)
 	if get_animation() == "hungry":
 		play("hungry_impatient")
+		supa_hungry = 1
 
 
 func wait_time(seconds: float) -> void:
