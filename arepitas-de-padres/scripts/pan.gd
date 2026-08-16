@@ -1,6 +1,6 @@
 extends Node2D
-@export var target_arepa: Node
 
+var target_arepa: Node
 var burning_limit: float = 12.0
 
 # Pan Down counter
@@ -15,6 +15,9 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 # @trace SREQ-001A @
 func _process(delta: float) -> void:
+	if not target_arepa:
+		return
+	
 	var arepa_timer = target_arepa.get_node_or_null("Timer")
 	
 	if arepa_timer:
@@ -33,9 +36,21 @@ func _process(delta: float) -> void:
 
 var func_clock_die
 func _on_area_2d_area_entered(area: Area2D) -> void:
+	if target_arepa:
+		return
+	
 	print("Arepa tocuh pan!!!!")
 	if area.has_method("on_pan_touch"):
+		target_arepa = area
+		area.burning_limit = burning_limit
+		area.target_pan = self
 		area.on_pan_touch(burning_limit)
+
+
+func _on_area_2d_area_exited(area: Area2D) -> void:
+	if area == target_arepa:
+		target_arepa.targte_pan = null
+		target_arepa = null
 
 
 # @trace SREQ-001C @ 

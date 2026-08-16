@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bog6aj1ljwier" path="res://scenes/arepita_movement.tscn" id="10_kvpfn"]
 [ext_resource type="Texture2D" uid="uid://m83dx7a4jmql" path="res://assets/kneading_board.png" id="11_dinhu"]
 [ext_resource type="Script" uid="uid://dl1hlrus6457v" path="res://scripts/board_area.gd" id="12_kvuet"]
+[ext_resource type="PackedScene" uid="uid://c88nwp2dqev3x" path="res://scenes/pan.tscn" id="13_trtic"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_g4v7s"]
 font_size = 90
@@ -165,7 +166,7 @@ interior = NodePath("../..")
 shape = SubResource("CircleShape2D_g4v7s")
 
 [node name="Board" type="Sprite2D" parent="Interior" unique_id=636973533]
-position = Vector2(744.2858, 478.57138)
+position = Vector2(834.28577, 478.5714)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("11_dinhu")
 
@@ -176,7 +177,25 @@ script = ExtResource("12_kvuet")
 position = Vector2(0, -5.7141724)
 shape = SubResource("RectangleShape2D_g4v7s")
 
+[node name="Pan" parent="Interior" unique_id=795190046 instance=ExtResource("13_trtic")]
+position = Vector2(1577.1428, 577.14294)
+scale = Vector2(0.15, 0.15)
+
+[node name="Pan2" parent="Interior" unique_id=1029818194 instance=ExtResource("13_trtic")]
+position = Vector2(1982.857, 577.1429)
+scale = Vector2(0.15, 0.15)
+
+[node name="Pan3" parent="Interior" unique_id=700018614 instance=ExtResource("13_trtic")]
+position = Vector2(2418.5718, 577.14294)
+scale = Vector2(0.15, 0.15)
+
+[node name="Pan4" parent="Interior" unique_id=2072097154 instance=ExtResource("13_trtic")]
+position = Vector2(2854.2856, 577.1429)
+scale = Vector2(0.15, 0.15)
+
 [node name="ScrollCamera" type="Camera2D" parent="Interior" unique_id=1334660153 node_paths=PackedStringArray("bounding_sprite", "screen_overlay")]
+position = Vector2(4.3596538e-05, 0)
+scale = Vector2(0.99999994, 0.99999994)
 anchor_mode = 0
 enabled = false
 script = ExtResource("6_p57ef")

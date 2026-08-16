@@ -14,7 +14,7 @@ var side_burn_limit: float = 120
 var is_side_A: bool = true
 var burning_level_side_A : float = 0
 var burning_level_side_B : float = 0
-@export var pan_target : Node2D
+var pan_target : Node2D
 
 # Called when the node enters the scene tree for the first time.
 var burning_limit = 0.0
@@ -27,7 +27,6 @@ func _ready() -> void:
 	if pan_target != null:
 		burning_limit = pan_target.burning_limit
 		print("Pan burning limit extracted:", burning_limit)
-	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
