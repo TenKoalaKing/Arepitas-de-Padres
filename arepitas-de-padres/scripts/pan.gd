@@ -43,7 +43,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.has_method("on_pan_touch"):
 		target_arepa = area
 		area.burning_limit = burning_limit
-		area.target_pan = self
+		area.pan_target = self
 		area.on_pan_touch(burning_limit)
 
 
@@ -56,6 +56,9 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 # @trace SREQ-001C @ 
 # Handles arepa place over a pan
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if not target_arepa:
+		return
+	
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
