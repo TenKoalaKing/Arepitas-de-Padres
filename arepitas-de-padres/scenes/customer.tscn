@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dtm3gy6dvq03g" path="res://assets/613.png" id="11_0m07s"]
 [ext_resource type="Texture2D" uid="uid://bs7q4iks7trs8" path="res://assets/615.png" id="12_y3ht7"]
 [ext_resource type="Texture2D" uid="uid://ddpyv31ft3edw" path="res://assets/620.png" id="13_lhulq"]
+[ext_resource type="Texture2D" uid="uid://bj2w6amkx6elf" path="res://assets/single_arepa.png" id="14_02a8g"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ivote"]
 animations = [{
@@ -127,15 +128,20 @@ position = Vector2(-680, -766)
 texture = ExtResource("8_w2wat")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="speeeeeeeeeeech" unique_id=434914044]
-position = Vector2(135, -59.000008)
-scale = Vector2(0.18999998, 0.18699998)
+position = Vector2(142.00002, -52.249996)
+scale = Vector2(0.20400001, 0.20050001)
 sprite_frames = SubResource("SpriteFrames_nehqj")
 animation = &"bacon"
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="speeeeeeeeeeech" unique_id=745778851]
-position = Vector2(150.00002, -229)
-scale = Vector2(0.15950002, 0.152)
+position = Vector2(127.625, -201.49998)
+scale = Vector2(0.19874999, 0.189)
 sprite_frames = SubResource("SpriteFrames_nehqj")
 animation = &"cheese"
+
+[node name="Sprite2D" type="Sprite2D" parent="speeeeeeeeeeech" unique_id=1534923558]
+position = Vector2(-137, -152)
+scale = Vector2(0.4409091, 0.42731276)
+texture = ExtResource("14_02a8g")
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
