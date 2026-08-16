@@ -1,6 +1,8 @@
 class_name Arepa
 extends Area2D
 
+@export var collision_shape: CollisionPolygon2D
+
 
 var isBurning : bool = false
 var shake_strenght: float = 10.0
@@ -20,6 +22,7 @@ var pan_target : Node2D
 var burning_limit = 0.0
 
 func _ready() -> void:
+	collision_shape.polygon = $normalArepa.polygon
 	original_position = global_position
 	$normalArepa.show()
 	$burningArepa.hide()
@@ -60,6 +63,7 @@ func enable_stretching() -> void:
 func disable_stretching() -> void:
 	$normalArepa.stretch_enabled = false
 	$burningArepa.polygon = $normalArepa.polygon
+	collision_shape.polygon = $normalArepa.polygon
 
 
 #Arepa Shake

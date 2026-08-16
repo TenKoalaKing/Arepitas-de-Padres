@@ -4,13 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://bj2w6amkx6elf" path="res://assets/single_arepa.png" id="2_6kf87"]
 [ext_resource type="Script" uid="uid://b2pwgvsfr7gwm" path="res://scripts/stretchable_object.gd" id="3_87xoe"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ndne8"]
-radius = 248.27808
-
-[node name="Area2D" type="Area2D" unique_id=1570155796 node_paths=PackedStringArray("pan_target")]
+[node name="Area2D" type="Area2D" unique_id=1570155796 node_paths=PackedStringArray("collision_shape")]
 scale = Vector2(0.645, 0.645)
 script = ExtResource("1_87xoe")
-pan_target = NodePath(".")
+collision_shape = NodePath("CollisionShape2D")
 
 [node name="normalArepa" type="Polygon2D" parent="." unique_id=235185990]
 texture = ExtResource("2_6kf87")
@@ -30,10 +27,8 @@ goal_size_mult = 8.0
 nodes_per_side = 2
 size = Vector2(200, 200)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=837788152]
-visible = false
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="." unique_id=1793742227]
 position = Vector2(74.41859, 38.759678)
-shape = SubResource("CircleShape2D_ndne8")
 
 [node name="Timer" type="Timer" parent="." unique_id=1739396232]
 
