@@ -11,7 +11,7 @@ const Filling = ArepaData.Filling
 @onready var twof = get_node(two_path)
 var rng = RandomNumberGenerator.new()
 @export var speech_path:NodePath
-@onready var speech = get_node(game_path)
+@onready var speech = get_node(speech_path)
 var next_character := 0
 var percent_differential := 20 # change to 0 after finished with character select script!
 var character_type  := 0
