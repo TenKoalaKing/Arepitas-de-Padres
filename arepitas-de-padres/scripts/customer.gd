@@ -32,7 +32,7 @@ var fillings_used_1 := 0
 var fillings_used_2 := 0
 var fillings_used_3 := 0
 var fillings_used_4 := 0
-
+var current_order := []
 
 func _ready() -> void:
 	speech.hide()
