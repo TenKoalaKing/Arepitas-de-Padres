@@ -46,6 +46,8 @@ func _input(event: InputEvent) -> void:
 		if event.is_action("drag"):
 			if event.pressed:
 				if Geometry2D.is_point_in_polygon(mouse_pos, polygon):
+					get_viewport().set_input_as_handled()
+					
 					var best_distance: float = mouse_pos.distance_to(polygon[0])
 					var best_point_index: int = 0
 					
@@ -68,6 +70,7 @@ func _input(event: InputEvent) -> void:
 			var shifted_point = polygon[currently_dragging_index] + event.relative
 			if not Geometry2D.is_point_in_polygon(shifted_point, polygon):
 				move_current_point_to_mouse(event.relative)
+				get_viewport().set_input_as_handled()
 
 
 func move_current_point_to_mouse(shift: Vector2) -> void:
@@ -82,6 +85,8 @@ func move_current_point_to_mouse(shift: Vector2) -> void:
 	polygon = PackedVector2Array(points)
 	if get_area(old_polygon) >= get_area(polygon):
 		polygon = old_polygon
+	else:
+		get_viewport().set_input_as_handled()
 
 
 func get_area(points: PackedVector2Array) -> float:

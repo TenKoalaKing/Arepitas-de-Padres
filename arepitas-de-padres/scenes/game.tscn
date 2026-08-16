@@ -11,15 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://bj2w6amkx6elf" path="res://assets/single_arepa.png" id="8_0tnpc"]
 [ext_resource type="Script" uid="uid://k6ososu73lei" path="res://scripts/arepa_source_area_2d.gd" id="9_vtaks"]
 [ext_resource type="PackedScene" uid="uid://bog6aj1ljwier" path="res://scenes/arepita_movement.tscn" id="10_kvpfn"]
-[ext_resource type="Texture2D" uid="uid://m83dx7a4jmql" path="res://assets/board.png" id="11_dinhu"]
-[ext_resource type="Script" uid="uid://dl1hlrus6457v" path="res://scenes/board_area.gd" id="12_kvuet"]
-[ext_resource type="PackedScene" uid="uid://c26ejljui6cs6" path="res://scenes/board_thingy.tscn" id="14_1kice"]
-[ext_resource type="Texture2D" uid="uid://cgfaxqly2tsjw" path="res://assets/616.png" id="15_5newe"]
-[ext_resource type="Texture2D" uid="uid://bcbxv2sobbx1o" path="res://assets/614.png" id="16_37s47"]
-[ext_resource type="Texture2D" uid="uid://dtm3gy6dvq03g" path="res://assets/613.png" id="17_bt5mj"]
-[ext_resource type="Texture2D" uid="uid://bs7q4iks7trs8" path="res://assets/615.png" id="18_e1j6l"]
-[ext_resource type="Texture2D" uid="uid://ddpyv31ft3edw" path="res://assets/620.png" id="19_pl11u"]
-[ext_resource type="Texture2D" uid="uid://dsjsxgbh48o7o" path="res://assets/gdj-divider-5243609_1920.png" id="20_bhx41"]
+[ext_resource type="Texture2D" uid="uid://m83dx7a4jmql" path="res://assets/kneading_board.png" id="11_dinhu"]
+[ext_resource type="Script" uid="uid://dl1hlrus6457v" path="res://scripts/board_area.gd" id="12_kvuet"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_g4v7s"]
 font_size = 90
@@ -33,49 +26,6 @@ radius = 247.5505
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(1680.0002, 1005.71436)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_qnb83"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("15_5newe")
-}],
-"loop": 1,
-"name": &"bacon",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("16_37s47")
-}],
-"loop": 1,
-"name": &"beef",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("17_bt5mj")
-}],
-"loop": 1,
-"name": &"cheese",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("18_e1j6l")
-}],
-"loop": 1,
-"name": &"chicken",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("19_pl11u")
-}],
-"loop": 1,
-"name": &"little_corn",
-"speed": 5.0
-}]
 
 [node name="Game" type="Node2D" unique_id=255140021 node_paths=PackedStringArray("start_menu", "customer_screen", "interior", "start_button", "shop_button", "screen_overlay")]
 script = ExtResource("1_uwrxv")
@@ -226,7 +176,7 @@ script = ExtResource("12_kvuet")
 position = Vector2(0, -5.7141724)
 shape = SubResource("RectangleShape2D_g4v7s")
 
-[node name="ScrollCamera" type="Camera2D" parent="Interior" unique_id=1334660153 node_paths=PackedStringArray("bounding_sprite", "screen_overlay", "customer_scripts")]
+[node name="ScrollCamera" type="Camera2D" parent="Interior" unique_id=1334660153 node_paths=PackedStringArray("bounding_sprite", "screen_overlay")]
 anchor_mode = 0
 enabled = false
 script = ExtResource("6_p57ef")
@@ -234,57 +184,6 @@ scroll_h = true
 bounding_sprite = NodePath("..")
 screen_overlay = NodePath("../../ScreenOverlay")
 section_positions = Array[Vector2]([Vector2(0, 0), Vector2(583.2, 0), Vector2(1166.4, 0)])
-game_path = NodePath("../..")
-customer_scripts = [NodePath("../../CustomerScreen/Node/customer"), NodePath("../../CustomerScreen/Node/customer"), NodePath("../../CustomerScreen/Node/customer2"), NodePath("../../CustomerScreen/Node/customer3"), NodePath("../../CustomerScreen/Node/customer4"), NodePath("../../CustomerScreen/Node/customer5"), NodePath("../../CustomerScreen/Node/customer6"), NodePath("../../CustomerScreen/Node/customer7"), NodePath("../../CustomerScreen/Node/customer8")]
-numberf = 1
-onef_path = NodePath("board_thingy/AnimatedSprite2D5")
-twof_path = NodePath("board_thingy/AnimatedSprite2D6")
-threef_path = NodePath("board_thingy/AnimatedSprite2D7")
-fourf_path = NodePath("board_thingy/AnimatedSprite2D8")
-
-[node name="board_thingy" parent="Interior/ScrollCamera" unique_id=1042858072 instance=ExtResource("14_1kice")]
-
-[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="Interior/ScrollCamera/board_thingy" unique_id=1297057889]
-position = Vector2(86.000015, -477.00003)
-rotation = -0.27052602
-scale = Vector2(0.33900005, 0.35025004)
-sprite_frames = SubResource("SpriteFrames_qnb83")
-animation = &"bacon"
-
-[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="Interior/ScrollCamera/board_thingy" unique_id=615724125]
-position = Vector2(-168.21916, -466.28613)
-rotation = -1.3421582
-scale = Vector2(0.35380653, 0.32820478)
-sprite_frames = SubResource("SpriteFrames_qnb83")
-animation = &"beef"
-
-[node name="Sprite2D3" type="Sprite2D" parent="Interior/ScrollCamera/board_thingy" unique_id=1134002692]
-position = Vector2(-82.00001, -653.00006)
-scale = Vector2(0.4409091, 0.42731276)
-texture = ExtResource("8_0tnpc")
-
-[node name="L I N E2" type="Sprite2D" parent="Interior/ScrollCamera/board_thingy" unique_id=314661933]
-position = Vector2(2.4999967, -200.00003)
-scale = Vector2(0.30364585, 0.24895833)
-texture = ExtResource("20_bhx41")
-
-[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="Interior/ScrollCamera/board_thingy" unique_id=346269466]
-position = Vector2(95.25, 136.1875)
-scale = Vector2(0.29650003, 0.38162506)
-sprite_frames = SubResource("SpriteFrames_qnb83")
-animation = &"bacon"
-
-[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="Interior/ScrollCamera/board_thingy" unique_id=958634681]
-position = Vector2(-149.21936, 161.99133)
-rotation = -1.0838494
-scale = Vector2(0.3420354, 0.4155396)
-sprite_frames = SubResource("SpriteFrames_qnb83")
-animation = &"cheese"
-
-[node name="Sprite2D4" type="Sprite2D" parent="Interior/ScrollCamera/board_thingy" unique_id=216367065]
-position = Vector2(-33.000008, -46.00006)
-scale = Vector2(0.4409091, 0.42731276)
-texture = ExtResource("8_0tnpc")
 
 [node name="ScreenOverlay" type="ColorRect" parent="." unique_id=396238436]
 mouse_filter = 2
