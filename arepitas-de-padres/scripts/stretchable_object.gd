@@ -32,42 +32,64 @@ func _ready() -> void:
 	
 	polygon = PackedVector2Array(points)
 	uv = PackedVector2Array(uvs)
-	print(points)
-	print(polygon)
 
 
 func _input(event: InputEvent) -> void:
+	var mouse_pos: Vector2 = get_local_mouse_position()
+	
 	if event is InputEventMouseButton:
 		if event.is_action("drag"):
 			if event.pressed:
-				var mouse_pos: Vector2 = get_local_mouse_position()
-				
-				var best_distance: float = mouse_pos.distance_to(polygon[0])
-				var best_point_index: int = 0
-				
-				for i in range(1, len(polygon)):
-					var distance: float = mouse_pos.distance_to(polygon[i])
+				if Geometry2D.is_point_in_polygon(mouse_pos, polygon):
+					var best_distance: float = mouse_pos.distance_to(polygon[0])
+					var best_point_index: int = 0
 					
-					if distance < best_distance:
-						best_distance = distance
-						best_point_index = i
-				
-				is_dragging = true
-				currently_dragging_index = best_point_index
+					for i in range(1, len(polygon)):
+						var distance: float = mouse_pos.distance_to(polygon[i])
+						
+						if distance < best_distance:
+							best_distance = distance
+							best_point_index = i
+					
+					is_dragging = true
+					currently_dragging_index = best_point_index
 			elif is_dragging:
 				is_dragging = false
-				move_current_point_to_mouse()
 	elif event is InputEventMouseMotion:
 		if is_dragging:
-			move_current_point_to_mouse()
+			var shifted_point = polygon[currently_dragging_index] + event.relative
+			if not Geometry2D.is_point_in_polygon(shifted_point, polygon):
+				move_current_point_to_mouse(event.relative)
 
 
-func move_current_point_to_mouse() -> void:
-	var points: Array[Vector2i] = []
+func move_current_point_to_mouse(shift: Vector2) -> void:
+	var points: Array[Vector2] = []
 	
 	for point in polygon:
 		points.push_back(point)
 	
-	points[currently_dragging_index] = get_local_mouse_position()
+	points[currently_dragging_index] += shift
 	
+	var old_polygon = polygon
 	polygon = PackedVector2Array(points)
+	if get_area(old_polygon) >= get_area(polygon):
+		polygon = old_polygon
+	
+
+
+func get_area(points: PackedVector2Array) -> float:
+	var area: float = 0
+	
+	for i in range(len(points)):
+		var point_1: Vector2 = points[i]
+		var point_2: Vector2
+		if i < len(points) - 1:
+			point_2 = points[i + 1]
+		else:
+			point_2 = points[0]
+		
+		area += 0.5 * (point_1.x - point_2.x) * (point_1.y + point_2.y)
+	
+	area = abs(area)
+	
+	return area

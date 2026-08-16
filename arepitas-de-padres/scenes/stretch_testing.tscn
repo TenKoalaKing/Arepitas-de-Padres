@@ -9,6 +9,7 @@
 material = SubResource("ShaderMaterial_jps6b")
 
 [node name="Polygon2D" type="Polygon2D" parent="." unique_id=559490964]
+position = Vector2(500, 300)
 texture = ExtResource("2_wanmx")
 polygon = PackedVector2Array(0, 0, 100, 0, 100, 100, 0, 100)
 uv = PackedVector2Array(0, 0, 440, 0, 440, 454, 0, 454)
