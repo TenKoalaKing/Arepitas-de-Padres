@@ -28,12 +28,12 @@ var dissastissfaction := 0.0 #maintaining level of dissatisfaction
 var waiting := 0
 var supa_hungry := 0
 var next_customer_served_in_line := 0
-var fillings_used_1 := Filling.NONE
-var fillings_used_2 := Filling.NONE
+var fillings_used_1 := 0
+var fillings_used_2 := 0
 var fillings_used_3 := 0
 var fillings_used_4 := 0
-var current_order := []
-# Called when the node enters the scene tree for the first time.
+
+
 func _ready() -> void:
 	speech.hide()
 
@@ -98,8 +98,10 @@ func speech_bubble():
 			onef.play("bacon")
 		5: 
 			onef.play("little_corn")
+
 		0: 
 			onef.hide()
+
 	match fillings_used_2:
 		1: 
 			twof.play("cheese")
@@ -143,6 +145,8 @@ func speech_bubble():
 	current_order = [fillings_used_1, fillings_used_2, fillings_used_3, fillings_used_4]
 	await wait_time(3)
 	speech.hide()
+
+
 
 
 func hungry_impatient_timer():
