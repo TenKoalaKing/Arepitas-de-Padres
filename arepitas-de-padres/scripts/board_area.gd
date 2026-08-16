@@ -11,8 +11,7 @@ func _on_area_entered(area: Area2D) -> void:
 	if current_arepa:
 		return
 	
-	var arepa: Arepa = area
-	current_arepa = arepa
+	current_arepa = area
 	
 	current_arepa.enable_stretching()
 
@@ -21,5 +20,5 @@ func _on_area_exited(area: Area2D) -> void:
 	if area != current_arepa:
 		return
 	
-	current_arepa.disable_stretching()
+	current_arepa.disable_stretching.call_deferred()
 	current_arepa = null
