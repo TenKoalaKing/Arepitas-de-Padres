@@ -31,8 +31,8 @@ var customer_exit_var := 0
 var ready_to_order := 0 # set to 0 in customer.gd
 var previous_order_count := 0
 var customer_orders: Array[Order] = []
-var fillings_used_1 := 0
-var fillings_used_2 := 0
+var fillings_used_1 := Filling.NONE
+var fillings_used_2 := Filling.NONE
 
 func _ready() -> void:
 	for i in range(8):
@@ -91,6 +91,11 @@ func add_order() -> void: #character_handed_to
 		
 		customer_orders[next_customer_served_in_line - 1].arepas.push_back(arepa_1)
 		customer_orders[next_customer_served_in_line - 1].arepas.push_back(arepa_2)
+		
+		fillings_used_1 = arepa_1.filling_1
+		fillings_used_2 = arepa_1.filling_2
+		
+		customer.speech_bubble()
 	
 	var cool_down_secs = randf_range(MIN_CUSTOMER_COOL_DOWN_SECS, MAX_CUSTOMER_COOL_DOWN_SECS)
 	var timer: SceneTreeTimer = get_tree().create_timer(cool_down_secs)

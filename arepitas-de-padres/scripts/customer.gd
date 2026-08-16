@@ -1,4 +1,7 @@
 extends AnimatedSprite2D
+
+const Filling = ArepaData.Filling
+
 @export var game_path:NodePath
 @onready var game_script = get_node(game_path)
 @export var character_num := 0
@@ -21,8 +24,8 @@ var dissastissfaction := 0.0 #maintaining level of dissatisfaction
 var waiting := 0
 var supa_hungry := 0
 var next_customer_served_in_line := 0
-var fillings_used_1 := 0
-var fillings_used_2 := 0
+var fillings_used_1 := Filling.NONE
+var fillings_used_2 := Filling.NONE
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#self.hide()
