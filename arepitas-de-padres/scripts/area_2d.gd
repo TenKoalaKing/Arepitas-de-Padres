@@ -33,7 +33,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	#shake_arepa()
 	if is_in_drag:
-		position = get_global_mouse_position()
+		position = (get_parent() as Node2D).get_local_mouse_position()
 		
 	# @trace SREQ-001A @
 	if not $Timer.is_stopped() and not is_arepa_burned and burning_limit > 0:
@@ -115,10 +115,14 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
 				is_in_drag = true
-	pass # Replace with function body.
+				get_viewport().set_input_as_handled()
 	
 # @trace SREQ-001C @
 func _input(event):
 	if event is InputEventMouseButton:
-		if !event.pressed:
+		if is_in_drag:
 			is_in_drag = false
+			get_viewport().set_input_as_handled()
+	elif event is InputEventMouseMotion:
+		if is_in_drag:
+			get_viewport().set_input_as_handled()

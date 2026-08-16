@@ -8,6 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://d1f0ranm0xppj" path="res://scenes/customer.tscn" id="6_gee14"]
 [ext_resource type="Script" uid="uid://tqvfdny6tgyt" path="res://scripts/scroll_camera.gd" id="6_p57ef"]
 [ext_resource type="Texture2D" uid="uid://dj332yj5w0qsc" path="res://assets/grass.png" id="7_u5sy4"]
+[ext_resource type="Texture2D" uid="uid://bj2w6amkx6elf" path="res://assets/single_arepa.png" id="8_0tnpc"]
+[ext_resource type="Script" uid="uid://k6ososu73lei" path="res://scripts/arepa_source_area_2d.gd" id="9_vtaks"]
+[ext_resource type="PackedScene" uid="uid://bog6aj1ljwier" path="res://scenes/arepita_movement.tscn" id="10_kvpfn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_g4v7s"]
 font_size = 90
@@ -15,6 +18,9 @@ font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Theme" id="Theme_g4v7s"]
 Button/font_sizes/font_size = 36
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+radius = 247.5505
 
 [node name="Game" type="Node2D" unique_id=255140021 node_paths=PackedStringArray("start_menu", "customer_screen", "interior", "start_button", "shop_button", "interior_camera", "screen_overlay")]
 script = ExtResource("1_uwrxv")
@@ -27,6 +33,7 @@ interior_camera = NodePath("Interior/ScrollCamera")
 screen_overlay = NodePath("ScreenOverlay")
 
 [node name="StartMenu" type="Control" parent="." unique_id=1883207886]
+visible = false
 custom_minimum_size = Vector2(1152, 648)
 layout_mode = 3
 anchors_preset = 0
@@ -136,10 +143,22 @@ game_path = NodePath("../../..")
 character_num = 8
 
 [node name="Interior" type="Sprite2D" parent="." unique_id=218149925]
-visible = false
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("5_iywne")
 centered = false
+
+[node name="ArepaSource" type="Sprite2D" parent="Interior" unique_id=1833513132]
+position = Vector2(210.00002, 477.14282)
+scale = Vector2(0.57142854, 0.57142854)
+texture = ExtResource("8_0tnpc")
+
+[node name="ArepaSourceArea2D" type="Area2D" parent="Interior/ArepaSource" unique_id=765057525 node_paths=PackedStringArray("interior")]
+script = ExtResource("9_vtaks")
+arepa_scene = ExtResource("10_kvpfn")
+interior = NodePath("../..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interior/ArepaSource/ArepaSourceArea2D" unique_id=1304482635]
+shape = SubResource("CircleShape2D_g4v7s")
 
 [node name="ScrollCamera" type="Camera2D" parent="Interior" unique_id=1334660153 node_paths=PackedStringArray("bounding_sprite", "screen_overlay")]
 anchor_mode = 0
