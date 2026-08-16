@@ -5,3 +5,6 @@ Papa's Arepitas is a game that is based on Papa's Pizzeria, but with arepas inst
 ## Assets Sourcing
 
 Most assets here were taken from Macondo, including the title screen. Some were modified a bit to better fit the game. The other assets were created by Bennett.
+
+![demo video](screenshots/demo.mkv)
+![screenshot](screenshots/Arepitas_de_padres.png)
