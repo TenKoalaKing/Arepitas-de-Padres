@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://bj2w6amkx6elf" path="res://assets/single_arepa.png" id="8_0tnpc"]
 [ext_resource type="Script" uid="uid://k6ososu73lei" path="res://scripts/arepa_source_area_2d.gd" id="9_vtaks"]
 [ext_resource type="PackedScene" uid="uid://bog6aj1ljwier" path="res://scenes/arepita_movement.tscn" id="10_kvpfn"]
+[ext_resource type="Texture2D" uid="uid://m83dx7a4jmql" path="res://assets/kneading_board.png" id="11_dinhu"]
+[ext_resource type="Script" uid="uid://dl1hlrus6457v" path="res://scenes/board_area.gd" id="12_kvuet"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_g4v7s"]
 font_size = 90
@@ -21,6 +23,9 @@ Button/font_sizes/font_size = 36
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
 radius = 247.5505
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(1680.0002, 1005.71436)
 
 [node name="Game" type="Node2D" unique_id=255140021 node_paths=PackedStringArray("start_menu", "customer_screen", "interior", "start_button", "shop_button", "interior_camera", "screen_overlay")]
 script = ExtResource("1_uwrxv")
@@ -160,6 +165,18 @@ interior = NodePath("../..")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interior/ArepaSource/ArepaSourceArea2D" unique_id=1304482635]
 shape = SubResource("CircleShape2D_g4v7s")
 
+[node name="Board" type="Sprite2D" parent="Interior" unique_id=636973533]
+position = Vector2(744.2858, 478.57138)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("11_dinhu")
+
+[node name="Area2D" type="Area2D" parent="Interior/Board" unique_id=639218466]
+script = ExtResource("12_kvuet")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interior/Board/Area2D" unique_id=626034223]
+position = Vector2(0, -5.7141724)
+shape = SubResource("RectangleShape2D_g4v7s")
+
 [node name="ScrollCamera" type="Camera2D" parent="Interior" unique_id=1334660153 node_paths=PackedStringArray("bounding_sprite", "screen_overlay")]
 anchor_mode = 0
 enabled = false
@@ -171,3 +188,6 @@ section_positions = Array[Vector2]([Vector2(0, 0), Vector2(583.2, 0), Vector2(11
 
 [node name="ScreenOverlay" type="ColorRect" parent="." unique_id=396238436]
 mouse_filter = 2
+
+[connection signal="area_entered" from="Interior/Board/Area2D" to="Interior/Board/Area2D" method="_on_area_entered"]
+[connection signal="area_exited" from="Interior/Board/Area2D" to="Interior/Board/Area2D" method="_on_area_exited"]

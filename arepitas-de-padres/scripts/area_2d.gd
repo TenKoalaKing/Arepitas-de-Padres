@@ -1,3 +1,4 @@
+class_name Arepa
 extends Area2D
 
 
@@ -51,7 +52,16 @@ func _process(delta: float) -> void:
 		if not is_arepa_burned:
 			is_arepa_burned = true
 			apply_burn_effect()
-		
+
+
+func enable_stretching() -> void:
+	$normalArepa.stretch_enabled = true
+
+
+func disable_stretching() -> void:
+	$normalArepa.stretch_enabled = false
+	$burningArepa.polygon = $normalArepa.polygon
+
 
 #Arepa Shake
 # @trace SREQ-001B @
@@ -71,8 +81,6 @@ func on_pan_touch(burning_limit: float):
 	# Start the arepa burn for side A
 	$normalArepa.show()
 	$Timer.start(burning_limit)
-	
-	
 	
 	#Shake the arepa a little bit
 	shake_arepa()
