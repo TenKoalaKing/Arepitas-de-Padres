@@ -76,8 +76,8 @@ func on_pan_touch(burning_limit: float):
 	
 	#Shake the arepa a little bit
 	shake_arepa()
-	
-	
+
+
 # Defines action that avoids overcooked arepa
 # @trace SREQ-001B @	
 func on_pan_flip(burning_limit: float):
@@ -86,8 +86,7 @@ func on_pan_flip(burning_limit: float):
 		shake_arepa()
 		$Timer.stop()
 		on_pan_touch(burning_limit)
-	
-		
+
 
 # @trace SREQ-001A @
 func apply_burn_effect():
@@ -96,18 +95,14 @@ func apply_burn_effect():
 	var tween = get_tree().create_tween()
 	var burned_color = Color("#1F150C")
 	tween.tween_property($burningArepa, "modulate", burned_color, 1.5)
-	
-	
+
+
 func _on_timer_timeout() -> void:
 	$normalArepa.hide()
 	$burningArepa.show()
 	apply_burn_effect()
 	is_arepa_burned = true
-	
-	
-	# Please add the logic of the burning game is lost
-	# or bad effect on the user
-	
+
 
 # @trace SREQ-001C @
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:

@@ -5,7 +5,7 @@ extends Polygon2D
 @export var nodes_per_side: int = 4
 @export var size: Vector2
 
-var stretch_enabled: bool = true
+var stretch_enabled: bool = false
 var is_dragging: bool = false
 var currently_dragging_index: int
 
@@ -82,7 +82,6 @@ func move_current_point_to_mouse(shift: Vector2) -> void:
 	polygon = PackedVector2Array(points)
 	if get_area(old_polygon) >= get_area(polygon):
 		polygon = old_polygon
-	
 
 
 func get_area(points: PackedVector2Array) -> float:

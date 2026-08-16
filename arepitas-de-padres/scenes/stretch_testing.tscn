@@ -1,19 +1,6 @@
 [gd_scene format=3 uid="uid://hhu8txkfgrxs"]
 
-[ext_resource type="Texture2D" uid="uid://bj2w6amkx6elf" path="res://assets/single_arepa.png" id="2_wanmx"]
-[ext_resource type="Script" uid="uid://b2pwgvsfr7gwm" path="res://scripts/stretchable_object.gd" id="3_bhv2w"]
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jps6b"]
 
 [node name="StretchTesting" type="Node2D" unique_id=40955582]
 material = SubResource("ShaderMaterial_jps6b")
-
-[node name="Polygon2D" type="Polygon2D" parent="." unique_id=559490964]
-position = Vector2(500, 300)
-texture = ExtResource("2_wanmx")
-polygon = PackedVector2Array(0, 0, 100, 0, 100, 100, 0, 100)
-uv = PackedVector2Array(0, 0, 440, 0, 440, 454, 0, 454)
-script = ExtResource("3_bhv2w")
-goal_size_mult = 8.0
-nodes_per_side = 2
-size = Vector2(100, 100)
