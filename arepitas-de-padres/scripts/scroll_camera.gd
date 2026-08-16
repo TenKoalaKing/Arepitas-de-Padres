@@ -72,19 +72,20 @@ func _process(_delta: float) -> void:
 				threef.play("little_corn")
 			0: 
 				threef.hide()
-		match current_order[4]:
-			1: 
-				fourf.play("cheese")
-			2: 
-				fourf.play("beef")
-			3: 
-				fourf.play("chicken")
-			4: 
-				fourf.play("bacon")
-			5: 
-				fourf.play("little_corn")
-			0:
-				fourf.hide()
+		if current_order.size()==3:
+			match current_order[4]:
+				1: 
+					fourf.play("cheese")
+				2: 
+					fourf.play("beef")
+				3: 
+					fourf.play("chicken")
+				4: 
+					fourf.play("bacon")
+				5: 
+					fourf.play("little_corn")
+				0:
+					fourf.hide()
 
 
 
