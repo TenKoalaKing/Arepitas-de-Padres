@@ -46,9 +46,7 @@ func _ready() -> void:
 	interior.hide()
 	start_button.pressed.connect(go_to_customer_screen)
 	start_button.pressed.connect(add_order)
-	
 	shop_button.pressed.connect(go_to_shop)
-	
 	
 	start_menu.custom_minimum_size = get_viewport_rect().size
 	screen_overlay.custom_minimum_size = get_viewport_rect().size
@@ -180,18 +178,3 @@ func wait_time(seconds: float) -> void:
 	timer.start()
 	await timer.timeout
 	timer.queue_free()
-	
-
-
-# @trace REQ-002 @
-func _on_start_button_pressed() -> void:
-	# Activate Vallenato
-	if start_button.pressed:
-		$VallenatoTrack.play()
-
-
-# @trace REQ-002 @
-func _on_shop_button_pressed() -> void:
-	# Activate Salsa
-	$VallenatoTrack.stop()
-	$SalsaTrack.play()

@@ -1,7 +1,7 @@
 class_name BoardArea
 extends Area2D
 
-var current_arepa: Arepa = null
+var current_arepa: Arepa
 
 
 func _on_area_entered(area: Area2D) -> void:
