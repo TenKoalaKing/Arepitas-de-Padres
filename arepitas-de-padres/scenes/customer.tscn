@@ -63,5 +63,11 @@ animations = [{
 position = Vector2(2, -9)
 sprite_frames = SubResource("SpriteFrames_ivote")
 animation = &"hunugry_impatient"
-frame_progress = 0.49815452
+frame_progress = 0.55614686
 script = ExtResource("7_qj8gj")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1523422555]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1874052883]
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

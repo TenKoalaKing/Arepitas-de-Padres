@@ -15,7 +15,7 @@ const FADE_DURATION_SECS: float = 0.5
 @export var interior_camera: ScrollCamera
 
 @export var screen_overlay: ColorRect
-
+var customer_scripts := [$msdfksodkfp, $CustomerScreen/Node/customer, $CustomerScreen/Node/customer2, $CustomerScreen/Node/customer3, $CustomerScreen/Node/customer4, $CustomerScreen/Node/customer5, $CustomerScreen/Node/customer6, $CustomerScreen/Node/customer7, $CustomerScreen/Node/customer8]
 var delayed_customers: Array[Order]
 var customer_orders: Array[Order]
 #customer section!!!!!!!!!!!!
@@ -25,7 +25,10 @@ var percent_cooked_furthest_from_100 := 0 # ADD BEFORE DEMO!
 var day_finished := 0 #true if equals to 1
 var start = 1
 var next_customer_served_in_line := 0
-# Called when the node enters the scene tree for the first time.
+var next_customer_to_be_served := 0
+var customer_exit_var := 0
+var ready_to_order := 0 # set to 0 in customer.gd
+var previous_order_count := 0
 func _ready() -> void:
 	start_menu.show()
 	customer_screen.hide()
@@ -56,16 +59,74 @@ func add_order() -> void: #character_handed_to
 		delayed_customers.append(Order.new(1))
 	else:
 		customer_orders.append(Order.new(1))
-	character_handed_to = customer_orders.size()
+	character_handed_to = customer_orders.size() + previous_order_count
 	if character_handed_to != 0:
 		#344.0, 425.0
-		while $CustomerScreen/Node/customer.position.x > 344 and $CustomerScreen/Node/customer.position.y > 425:
-			if $CustomerScreen/Node/customer.position.x > 344:
-				$CustomerScreen/Node/customer.position.x -= 3*randf()
-			if $CustomerScreen/Node/customer.position.y > 425:
-				$CustomerScreen/Node/customer.position.y -= 1.5*randf()
-			await wait_time(0.015)
-
+		match next_customer_served_in_line:
+			1:
+				while $CustomerScreen/Node/customer.position.x > 344 and $CustomerScreen/Node/customer.position.y > 425:
+					if $CustomerScreen/Node/customer.position.x > 344:
+						$CustomerScreen/Node/customer.position.x -= 3*randf()
+					if $CustomerScreen/Node/customer.position.y > 425:
+						$CustomerScreen/Node/customer.position.y -= 1.5*randf()
+					await wait_time(0.015)
+					ready_to_order = 1
+			2:
+				while $CustomerScreen/Node/customer2.position.x > 344 and $CustomerScreen/Node/customer.position.y > 425:
+					if $CustomerScreen/Node/customer2.position.x > 344:
+						$CustomerScreen/Node/customer2.position.x -= 3*randf()
+					if $CustomerScreen/Node/customer2.position.y > 425:
+						$CustomerScreen/Node/customer2.position.y -= 1.5*randf()
+					await wait_time(0.015)
+					ready_to_order = 1
+			3:
+				while $CustomerScreen/Node/customer3.position.x > 344 and $CustomerScreen/Node/customer.position.y > 425:
+					if $CustomerScreen/Node/customer3.position.x > 344:
+						$CustomerScreen/Node/customer3.position.x -= 3*randf()
+					if $CustomerScreen/Node/customer3.position.y > 425:
+						$CustomerScreen/Node/customer3.position.y -= 1.5*randf()
+					await wait_time(0.015)
+					ready_to_order = 1
+			4:
+				while $CustomerScreen/Node/customer4.position.x > 344 and $CustomerScreen/Node/customer.position.y > 425:
+					if $CustomerScreen/Node/customer4.position.x > 344:
+						$CustomerScreen/Node/customer4.position.x -= 3*randf()
+					if $CustomerScreen/Node/customer4.position.y > 425:
+						$CustomerScreen/Node/customer4.position.y -= 1.5*randf()
+					await wait_time(0.015)
+					ready_to_order = 1
+			5:
+				while $CustomerScreen/Node/customer5.position.x > 344 and $CustomerScreen/Node/customer.position.y > 425:
+					if $CustomerScreen/Node/customer5.position.x > 344:
+						$CustomerScreen/Node/customer5.position.x -= 3*randf()
+					if $CustomerScreen/Node/customer5.position.y > 425:
+						$CustomerScreen/Node/customer5.position.y -= 1.5*randf()
+					await wait_time(0.015)
+					ready_to_order = 1
+			6:
+				while $CustomerScreen/Node/customer6.position.x > 344 and $CustomerScreen/Node/customer.position.y > 425:
+					if $CustomerScreen/Node/customer6.position.x > 344:
+						$CustomerScreen/Node/customer6.position.x -= 3*randf()
+					if $CustomerScreen/Node/customer6.position.y > 425:
+						$CustomerScreen/Node/customer6.position.y -= 1.5*randf()
+					await wait_time(0.015)
+					ready_to_order = 1
+			7:
+				while $CustomerScreen/Node/customer7.position.x > 344 and $CustomerScreen/Node/customer.position.y > 425:
+					if $CustomerScreen/Node/customer7.position.x > 344:
+						$CustomerScreen/Node/customer7.position.x -= 3*randf()
+					if $CustomerScreen/Node/customer7.position.y > 425:
+						$CustomerScreen/Node/customer7.position.y -= 1.5*randf()
+					await wait_time(0.015)
+					ready_to_order = 1
+			8:
+				while $CustomerScreen/Node/customer8.position.x > 344 and $CustomerScreen/Node/customer.position.y > 425:
+					if $CustomerScreen/Node/customer8.position.x > 344:
+						$CustomerScreen/Node/customer8.position.x -= 3*randf()
+					if $CustomerScreen/Node/customer8.position.y > 425:
+						$CustomerScreen/Node/customer8.position.y -= 1.5*randf()
+					await wait_time(0.015)
+					ready_to_order = 1
 			
 		await wait_time(1)
 		character_handed_to = 0
@@ -115,8 +176,24 @@ func finish_scene_transition() -> void:
 	var tween: Tween = create_tween()
 	tween.tween_property(screen_overlay, "color", Color(0, 0, 0, 0), FADE_DURATION_SECS / 2)
 
-
-
+func order_taken():
+	while customer_scripts[next_customer_served_in_line].position.x < 519 and customer_scripts[next_customer_served_in_line] < 553: # old x: 344, 425
+		if customer_scripts[next_customer_served_in_line].position.x < 519:
+			customer_scripts[next_customer_served_in_line].position.x += 3*randf()
+		if  customer_scripts[next_customer_served_in_line].position.y < 553:
+			print("space")
+			customer_scripts[next_customer_served_in_line].position.y += 1.5*randf()
+func customer_served():
+	while customer_scripts[next_customer_to_be_served].position.x > 344: # old x: 519, 553
+		if customer_scripts[next_customer_to_be_served].position.x > 344: #REDUNDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANT!!!!!!!!!!!!!!!!!!!!!!!!!!
+			customer_scripts[next_customer_to_be_served].position.x -= 3*randf()
+func customer_exit(): #customer_exit
+	while customer_scripts[customer_exit_var].position.x < 519 and customer_scripts[customer_exit_var].position.y < 553: # old x: 344, 425
+		if customer_scripts[customer_exit_var].position.x < 519:
+			customer_scripts[customer_exit_var].position.x += 3*randf()
+		if  customer_scripts[customer_exit_var].position.y < 553:
+			print("space")
+			customer_scripts[customer_exit_var].position.y += 1.5*randf()
 
 
 func wait_time(seconds: float) -> void:
