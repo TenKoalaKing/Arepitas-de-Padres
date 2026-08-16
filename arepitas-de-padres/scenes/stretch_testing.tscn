@@ -14,5 +14,6 @@ texture = ExtResource("2_wanmx")
 polygon = PackedVector2Array(0, 0, 100, 0, 100, 100, 0, 100)
 uv = PackedVector2Array(0, 0, 440, 0, 440, 454, 0, 454)
 script = ExtResource("3_bhv2w")
+goal_size_mult = 8.0
 nodes_per_side = 2
 size = Vector2(100, 100)

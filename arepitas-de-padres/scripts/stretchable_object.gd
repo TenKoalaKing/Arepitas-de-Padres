@@ -1,9 +1,11 @@
 class_name StretchableObject
 extends Polygon2D
 
+@export var goal_size_mult: float = 5
 @export var nodes_per_side: int = 4
 @export var size: Vector2
 
+var stretch_enabled: bool = true
 var is_dragging: bool = false
 var currently_dragging_index: int
 
@@ -35,6 +37,9 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
+	if not stretch_enabled:
+		return
+	
 	var mouse_pos: Vector2 = get_local_mouse_position()
 	
 	if event is InputEventMouseButton:
@@ -55,6 +60,9 @@ func _input(event: InputEvent) -> void:
 					currently_dragging_index = best_point_index
 			elif is_dragging:
 				is_dragging = false
+				if get_area(polygon) >= goal_size_mult * size.x * size.y:
+					stretch_enabled = false
+					print(get_area(polygon))
 	elif event is InputEventMouseMotion:
 		if is_dragging:
 			var shifted_point = polygon[currently_dragging_index] + event.relative
