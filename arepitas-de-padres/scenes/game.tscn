@@ -190,10 +190,14 @@ scale = Vector2(0.7, 0.7)
 texture = ExtResource("5_iywne")
 centered = false
 
-[node name="ScrollCamera" type="Camera2D" parent="Interior" unique_id=1334660153 node_paths=PackedStringArray("customer_scripts")]
+[node name="ScrollCamera" type="Camera2D" parent="Interior" unique_id=1334660153 node_paths=PackedStringArray("bounding_sprite", "screen_overlay", "customer_scripts")]
 anchor_mode = 0
 enabled = false
 script = ExtResource("6_p57ef")
+scroll_h = true
+bounding_sprite = NodePath("..")
+screen_overlay = NodePath("../../ScreenOverlay")
+section_positions = Array[Vector2]([Vector2(0, 0), Vector2(500, 0), Vector2(1100, 0)])
 game_path = NodePath("../..")
 customer_scripts = [NodePath("../../CustomerScreen/Node/customer"), NodePath("../../CustomerScreen/Node/customer"), NodePath("../../CustomerScreen/Node/customer2"), NodePath("../../CustomerScreen/Node/customer3"), NodePath("../../CustomerScreen/Node/customer4"), NodePath("../../CustomerScreen/Node/customer5"), NodePath("../../CustomerScreen/Node/customer6"), NodePath("../../CustomerScreen/Node/customer7"), NodePath("../../CustomerScreen/Node/customer8")]
 numberf = 1
