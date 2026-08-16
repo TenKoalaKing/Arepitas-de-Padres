@@ -14,7 +14,7 @@ const Filling = ArepaData.Filling
 
 @export var start_button: Button
 @export var shop_button: Button
-@export var interior_camera: ScrollCamera
+@onready var interior_camera := $Interior/ScrollCamera #old: @export var interior_camera: ScrollCamera
 @export var screen_overlay: ColorRect
 
 @onready var customer_scripts := [null, $CustomerScreen/Node/customer, $CustomerScreen/Node/customer2, $CustomerScreen/Node/customer3, $CustomerScreen/Node/customer4, $CustomerScreen/Node/customer5, $CustomerScreen/Node/customer6, $CustomerScreen/Node/customer7, $CustomerScreen/Node/customer8]
