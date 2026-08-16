@@ -7,9 +7,9 @@ Description:
 
 # Connections
 
-| Type         | Route                                        |
-| :----------- | :------------------------------------------- |
-| **📂 Other** | [area\_2d](../arepitas-de-padres/area_2d.gd) |
+| Type         | Route                                                |
+| :----------- | :--------------------------------------------------- |
+| **📂 Other** | [area\_2d](../arepitas-de-padres/scripts/area_2d.gd) |
 
 # Acceptance Criteria
 
