@@ -4,10 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://bj2w6amkx6elf" path="res://assets/single_arepa.png" id="2_6kf87"]
 [ext_resource type="Script" uid="uid://b2pwgvsfr7gwm" path="res://scripts/stretchable_object.gd" id="3_87xoe"]
 
-[node name="Area2D" type="Area2D" unique_id=1570155796 node_paths=PackedStringArray("collision_shape")]
+[node name="Area2D" type="Area2D" unique_id=1570155796 node_paths=PackedStringArray("collision_shape", "timer")]
 scale = Vector2(0.645, 0.645)
 script = ExtResource("1_87xoe")
 collision_shape = NodePath("CollisionShape2D")
+timer = NodePath("Timer")
 
 [node name="normalArepa" type="Polygon2D" parent="." unique_id=235185990]
 texture = ExtResource("2_6kf87")

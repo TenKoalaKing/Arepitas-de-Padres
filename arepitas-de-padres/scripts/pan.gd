@@ -5,7 +5,7 @@ var burning_limit: float = 12.0
 
 # Pan Down counter
 # @trace SREQ-001A @
-@onready var timer_label = $CanvasLayer/TimerText
+@export var timer_label: Label
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -25,10 +25,10 @@ func _process(delta: float) -> void:
 		# The actual time left 
 		if target_arepa.is_side_A:
 			var current_limit_state = burning_limit - (target_arepa.burning_level_side_A / 10)
-			timer_label.text = str(current_limit_state)
+			timer_label.text = "%.05f" % current_limit_state
 		else:
 			var current_limit_state = burning_limit - (target_arepa.burning_level_side_B / 10)
-			timer_label.text = str(current_limit_state)
+			timer_label.text = "%.05f" % current_limit_state
 	
 	if target_arepa.is_arepa_burned:
 		timer_label.text = "This arepa is overcoked"
@@ -49,7 +49,9 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
 	if area == target_arepa:
-		target_arepa.targte_pan = null
+		timer_label.text = ""
+		area.timer.stop()
+		target_arepa.pan_target = null
 		target_arepa = null
 
 

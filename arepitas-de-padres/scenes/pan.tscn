@@ -6,10 +6,14 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ivfug"]
 size = Vector2(3605.9866, 2138.0244)
 
-[node name="Pan" type="Node2D" unique_id=795190046]
+[sub_resource type="LabelSettings" id="LabelSettings_bkvwt"]
+font_size = 250
+
+[node name="Pan" type="Node2D" unique_id=795190046 node_paths=PackedStringArray("timer_label")]
 position = Vector2(544, 395)
 scale = Vector2(0.1, 0.1)
 script = ExtResource("1_bkvwt")
+timer_label = NodePath("Control/TimerText")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=716697312]
 position = Vector2(-380, -330)
@@ -26,14 +30,24 @@ rotation = -0.9122936
 scale = Vector2(0.9999999, 0.9999999)
 shape = SubResource("RectangleShape2D_ivfug")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1381832282]
+[node name="Control" type="Control" parent="." unique_id=1114215365]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="TimerText" type="Label" parent="CanvasLayer" unique_id=183233651]
-offset_left = 424.0
-offset_top = 575.0
-offset_right = 2454.0
-offset_bottom = 1025.0001
+[node name="TimerText" type="Label" parent="Control" unique_id=183233651]
+z_index = 1
+layout_mode = 0
+offset_left = -1380.0
+offset_top = 1320.0
+offset_right = 650.0
+offset_bottom = 1770.0
+label_settings = SubResource("LabelSettings_bkvwt")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

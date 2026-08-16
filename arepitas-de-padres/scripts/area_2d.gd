@@ -2,6 +2,7 @@ class_name Arepa
 extends Area2D
 
 @export var collision_shape: CollisionPolygon2D
+@export var timer: Timer
 
 
 var isBurning : bool = false
@@ -122,7 +123,7 @@ func _on_input_event(viewport: Node, event: InputEvent, _shape_idx: int) -> void
 			if event.pressed:
 				is_in_drag = true
 				get_viewport().set_input_as_handled()
-	
+
 # @trace SREQ-001C @
 func _input(event):
 	if event is InputEventMouseButton:
