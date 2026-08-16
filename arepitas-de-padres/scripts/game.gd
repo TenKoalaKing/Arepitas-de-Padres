@@ -1,4 +1,4 @@
-class_name Game
+class_name Game 
 extends Node2D
 
 const MAX_CUSTOMER_COUNT: int = 4
@@ -16,7 +16,6 @@ const FADE_DURATION_SECS: float = 0.5
 @export var screen_overlay: ColorRect
 
 var customer_scripts := [$msdfksodkfp, $CustomerScreen/Node/customer, $CustomerScreen/Node/customer2, $CustomerScreen/Node/customer3, $CustomerScreen/Node/customer4, $CustomerScreen/Node/customer5, $CustomerScreen/Node/customer6, $CustomerScreen/Node/customer7, $CustomerScreen/Node/customer8]
-
 #customer section!!!!!!!!!!!!
 var character_type := 0
 var character_handed_to := 0
@@ -39,7 +38,9 @@ func _ready() -> void:
 	start_menu.custom_minimum_size = get_viewport_rect().size
 	screen_overlay.custom_minimum_size = get_viewport_rect().size
 	
-	screen_overlay.color = Color(0, 0, 0, 0)
+	screen_overlay.color = Color(0, 0, 0, 0) #A young married couple is very excited to be come parents. They are so into it that they are getting info everywhere they can; internet, books, classes, other parents. As they due date gets closer they have a name picked out for both genders (of course they want the surprise) and the room is all decorated in a neutral color. Finally, the big day arrives. The parents to be are in the delivery room and the husband is rushing out to the waiting room to update the just as excited family. With one final push out comes their baby. The doc and nurses do their thing and the doc asks if the dad wants to cut the umbilical cord. He of course does. But, before handing the parents their new baby the doc starts swinging the baby around by its umbilical cord. Faster and faster, blood starts flying everywhere. The parents are screaming. Then, the doc just chucks the baby right out the door like a bowling ball. The parents continue screaming at the doc and he just calmly looks over at them and says, "Don't worry, it was dead when it came out."
+
+
 
 
 func _input(event: InputEvent) -> void:
