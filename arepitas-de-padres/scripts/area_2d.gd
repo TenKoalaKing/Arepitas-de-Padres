@@ -79,7 +79,7 @@ func shake_arepa():
 
 # @trace SREQ-001B @
 # Hit the pan at the beggining as a starter
-func on_pan_touch(burning_limit: float):
+func on_pan_touch(_burning_limit: float):
 	print("Pan started or restarted")
 	# Start the arepa burn for side A
 	$normalArepa.show()
@@ -91,7 +91,7 @@ func on_pan_touch(burning_limit: float):
 
 # Defines action that avoids overcooked arepa
 # @trace SREQ-001B @	
-func on_pan_flip(burning_limit: float):
+func on_pan_flip(_burning_limit: float):
 	if !is_arepa_burned:
 		is_side_A = !is_side_A
 		shake_arepa()
@@ -116,7 +116,7 @@ func _on_timer_timeout() -> void:
 
 
 # @trace SREQ-001C @
-func _on_input_event(viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
