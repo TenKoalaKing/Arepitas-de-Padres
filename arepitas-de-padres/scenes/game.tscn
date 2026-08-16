@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://3y0c7by7k5iu" path="res://assets/planks.png" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://d1f0ranm0xppj" path="res://scenes/customer.tscn" id="6_gee14"]
 [ext_resource type="Texture2D" uid="uid://dj332yj5w0qsc" path="res://assets/grass.png" id="7_u5sy4"]
-[ext_resource type="Script" uid="uid://c5bc1i21jeuuy" path="res://scripts/board_thingy.gd" id="8_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://c26ejljui6cs6" path="res://scenes/board_thingy.tscn" id="9_vtaks"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_g4v7s"]
@@ -16,6 +15,8 @@ font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Theme" id="Theme_g4v7s"]
 Button/font_sizes/font_size = 36
+
+[sub_resource type="GDScript" id="GDScript_gee14"]
 
 [node name="Game" type="Node2D" unique_id=255140021 node_paths=PackedStringArray("start_menu", "customer_screen", "interior", "start_button", "shop_button", "interior_camera", "screen_overlay")]
 script = ExtResource("1_uwrxv")
@@ -145,7 +146,7 @@ centered = false
 [node name="ScrollCamera" type="Camera2D" parent="Interior" unique_id=1334660153]
 anchor_mode = 0
 enabled = false
-script = ExtResource("8_0tnpc")
+script = SubResource("GDScript_gee14")
 
 [node name="board_thingy" parent="Interior/ScrollCamera" unique_id=1042858072 instance=ExtResource("9_vtaks")]
 
