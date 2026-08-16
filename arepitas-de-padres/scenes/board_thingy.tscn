@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://c26ejljui6cs6"]
+
+[ext_resource type="Texture2D" uid="uid://m83dx7a4jmql" path="res://assets/board.png" id="1_vt38a"]
+[ext_resource type="Texture2D" uid="uid://cgfaxqly2tsjw" path="res://assets/616.png" id="2_iiito"]
+[ext_resource type="Texture2D" uid="uid://bcbxv2sobbx1o" path="res://assets/614.png" id="3_oyv8v"]
+[ext_resource type="Texture2D" uid="uid://dtm3gy6dvq03g" path="res://assets/613.png" id="4_svlbe"]
+[ext_resource type="Texture2D" uid="uid://bs7q4iks7trs8" path="res://assets/615.png" id="5_me57k"]
+[ext_resource type="Texture2D" uid="uid://ddpyv31ft3edw" path="res://assets/620.png" id="6_8td2y"]
+[ext_resource type="Texture2D" uid="uid://bj2w6amkx6elf" path="res://assets/single_arepa.png" id="7_8gklx"]
+[ext_resource type="Texture2D" uid="uid://dsjsxgbh48o7o" path="res://assets/gdj-divider-5243609_1920.png" id="8_xn2rx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cjayf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_iiito")
+}],
+"loop": 1,
+"name": &"bacon",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_oyv8v")
+}],
+"loop": 1,
+"name": &"beef",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_svlbe")
+}],
+"loop": 1,
+"name": &"cheese",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_me57k")
+}],
+"loop": 1,
+"name": &"chicken",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_8td2y")
+}],
+"loop": 1,
+"name": &"little_corn",
+"speed": 5.0
+}]
+
+[node name="board_thingy" type="Sprite2D" unique_id=1042858072]
+position = Vector2(4.000001, 1)
+scale = Vector2(0.34037963, 0.30624998)
+texture = ExtResource("1_vt38a")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=304643584]
+position = Vector2(86.000015, -477.00003)
+rotation = -0.27052602
+scale = Vector2(0.33900005, 0.35025004)
+sprite_frames = SubResource("SpriteFrames_cjayf")
+animation = &"bacon"
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=1928635737]
+position = Vector2(-168.21916, -466.28613)
+rotation = -1.3421582
+scale = Vector2(0.35380653, 0.32820478)
+sprite_frames = SubResource("SpriteFrames_cjayf")
+animation = &"beef"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=140561710]
+position = Vector2(-82.00001, -653.00006)
+scale = Vector2(0.4409091, 0.42731276)
+texture = ExtResource("7_8gklx")
+
+[node name="L I N E" type="Sprite2D" parent="." unique_id=1852077434]
+position = Vector2(2.4999967, -200.00003)
+scale = Vector2(0.30364585, 0.24895833)
+texture = ExtResource("8_xn2rx")
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="." unique_id=147964628]
+position = Vector2(95.25, 136.1875)
+scale = Vector2(0.29650003, 0.38162506)
+sprite_frames = SubResource("SpriteFrames_cjayf")
+animation = &"bacon"
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="." unique_id=440440168]
+position = Vector2(-149.21936, 161.99133)
+rotation = -1.0838494
+scale = Vector2(0.3420354, 0.4155396)
+sprite_frames = SubResource("SpriteFrames_cjayf")
+animation = &"cheese"
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1177091363]
+position = Vector2(-33.000008, -46.00006)
+scale = Vector2(0.4409091, 0.42731276)
+texture = ExtResource("7_8gklx")

@@ -52,6 +52,10 @@ section_3={
 ]
 }
 
+[input_devices]
+
+pointing/emulate_mouse_from_touch=false
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

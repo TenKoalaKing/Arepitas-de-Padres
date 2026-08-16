@@ -32,17 +32,15 @@ var fillings_used_1 := Filling.NONE
 var fillings_used_2 := Filling.NONE
 var fillings_used_3 := 0
 var fillings_used_4 := 0
-
+var current_order := []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#self.hide()
-	pass
+	speech.hide()
 
 
 func _process(_delta: float) -> void:
 	fillings_used_1 = game_script.fillings_used_1
 	fillings_used_2 = game_script.fillings_used_2
-	#speech.hide()
 	next_character = character_num
 	next_customer_served_in_line = game_script.next_customer_served_in_line
 	if character_num == next_character and character_not_active == 1:
@@ -84,6 +82,7 @@ func _process(_delta: float) -> void:
 		dissastissfaction = 0
 		self.hide()
 		supa_hungry = 0
+		current_order = []
 		
 		
 func speech_bubble():
@@ -99,6 +98,8 @@ func speech_bubble():
 			onef.play("bacon")
 		5: 
 			onef.play("little_corn")
+		0: 
+			onef.hide()
 	match fillings_used_2:
 		1: 
 			twof.play("cheese")
@@ -110,6 +111,8 @@ func speech_bubble():
 			twof.play("bacon")
 		5: 
 			twof.play("little_corn")
+		0: 
+			twof.hide()
 	await wait_time(3)
 	match fillings_used_3:
 		1: 
@@ -123,7 +126,7 @@ func speech_bubble():
 		5: 
 			onef.play("little_corn")
 		0: 
-			hide()
+			twof.hide()
 	match fillings_used_4:
 		1: 
 			twof.play("cheese")
@@ -134,9 +137,10 @@ func speech_bubble():
 		4: 
 			twof.play("bacon")
 		5: 
-			twof.play("little_corn")
+			twof.playplay("little_corn")
 		0:
-			hide()
+			twof.hide()
+	current_order = [fillings_used_1, fillings_used_2, fillings_used_3, fillings_used_4]
 	await wait_time(3)
 	speech.hide()
 
