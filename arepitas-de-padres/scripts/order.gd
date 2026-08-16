@@ -1,8 +1,8 @@
 class_name Order
 extends RefCounted
 
-var arepa_count: int
+var arepas: Array[ArepaData]
 
 
-func _init(p_arepa_count: int) -> void:
-	arepa_count = p_arepa_count
+func _init(p_arepas: Array[ArepaData] = []) -> void:
+	arepas = p_arepas

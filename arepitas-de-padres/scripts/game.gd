@@ -6,6 +6,8 @@ const MIN_CUSTOMER_COOL_DOWN_SECS: float = 20
 const MAX_CUSTOMER_COOL_DOWN_SECS: float = 50
 const FADE_DURATION_SECS: float = 0.5
 
+const Filling = ArepaData.Filling
+
 @export var start_menu: Control
 @export var customer_screen: Sprite2D
 @export var interior: Sprite2D
@@ -15,7 +17,8 @@ const FADE_DURATION_SECS: float = 0.5
 @export var interior_camera: ScrollCamera
 @export var screen_overlay: ColorRect
 
-var customer_scripts := [$msdfksodkfp, $CustomerScreen/Node/customer, $CustomerScreen/Node/customer2, $CustomerScreen/Node/customer3, $CustomerScreen/Node/customer4, $CustomerScreen/Node/customer5, $CustomerScreen/Node/customer6, $CustomerScreen/Node/customer7, $CustomerScreen/Node/customer8]
+@onready var customer_scripts := [null, $CustomerScreen/Node/customer, $CustomerScreen/Node/customer2, $CustomerScreen/Node/customer3, $CustomerScreen/Node/customer4, $CustomerScreen/Node/customer5, $CustomerScreen/Node/customer6, $CustomerScreen/Node/customer7, $CustomerScreen/Node/customer8]
+
 #customer section!!!!!!!!!!!!
 var character_type := 0
 var character_handed_to := 0
@@ -27,7 +30,13 @@ var next_customer_to_be_served := 0
 var customer_exit_var := 0
 var ready_to_order := 0 # set to 0 in customer.gd
 var previous_order_count := 0
+var customer_orders: Array[Order] = []
+
+
 func _ready() -> void:
+	for i in range(8):
+		customer_orders.push_back(Order.new([]))
+	
 	start_menu.show()
 	customer_screen.hide()
 	interior.hide()
@@ -38,9 +47,7 @@ func _ready() -> void:
 	start_menu.custom_minimum_size = get_viewport_rect().size
 	screen_overlay.custom_minimum_size = get_viewport_rect().size
 	
-	screen_overlay.color = Color(0, 0, 0, 0) #A young married couple is very excited to be come parents. They are so into it that they are getting info everywhere they can; internet, books, classes, other parents. As they due date gets closer they have a name picked out for both genders (of course they want the surprise) and the room is all decorated in a neutral color. Finally, the big day arrives. The parents to be are in the delivery room and the husband is rushing out to the waiting room to update the just as excited family. With one final push out comes their baby. The doc and nurses do their thing and the doc asks if the dad wants to cut the umbilical cord. He of course does. But, before handing the parents their new baby the doc starts swinging the baby around by its umbilical cord. Faster and faster, blood starts flying everywhere. The parents are screaming. Then, the doc just chucks the baby right out the door like a bowling ball. The parents continue screaming at the doc and he just calmly looks over at them and says, "Don't worry, it was dead when it came out."
-
-
+	screen_overlay.color = Color(0, 0, 0, 0)
 
 
 func _input(event: InputEvent) -> void:
@@ -59,74 +66,27 @@ func add_order() -> void: #character_handed_to
 	#character_handed_to = customer_orders.size() + previous_order_count #FIXIFIXIIFIXIIFIX
 	if character_handed_to != 0:
 		#344.0, 425.0
-		match next_customer_served_in_line:
-			1:
-				while $CustomerScreen/Node/customer.position.x > 344 and $CustomerScreen/Node/customer.position.y > 425:
-					if $CustomerScreen/Node/customer.position.x > 344:
-						$CustomerScreen/Node/customer.position.x -= 3*randf()
-					if $CustomerScreen/Node/customer.position.y > 425:
-						$CustomerScreen/Node/customer.position.y -= 1.5*randf()
-					await wait_time(0.015)
-					ready_to_order = 1
-			2:
-				while $CustomerScreen/Node/customer2.position.x > 344 and $CustomerScreen/Node/customer.position.y > 425:
-					if $CustomerScreen/Node/customer2.position.x > 344:
-						$CustomerScreen/Node/customer2.position.x -= 3*randf()
-					if $CustomerScreen/Node/customer2.position.y > 425:
-						$CustomerScreen/Node/customer2.position.y -= 1.5*randf()
-					await wait_time(0.015)
-					ready_to_order = 1
-			3:
-				while $CustomerScreen/Node/customer3.position.x > 344 and $CustomerScreen/Node/customer.position.y > 425:
-					if $CustomerScreen/Node/customer3.position.x > 344:
-						$CustomerScreen/Node/customer3.position.x -= 3*randf()
-					if $CustomerScreen/Node/customer3.position.y > 425:
-						$CustomerScreen/Node/customer3.position.y -= 1.5*randf()
-					await wait_time(0.015)
-					ready_to_order = 1
-			4:
-				while $CustomerScreen/Node/customer4.position.x > 344 and $CustomerScreen/Node/customer.position.y > 425:
-					if $CustomerScreen/Node/customer4.position.x > 344:
-						$CustomerScreen/Node/customer4.position.x -= 3*randf()
-					if $CustomerScreen/Node/customer4.position.y > 425:
-						$CustomerScreen/Node/customer4.position.y -= 1.5*randf()
-					await wait_time(0.015)
-					ready_to_order = 1
-			5:
-				while $CustomerScreen/Node/customer5.position.x > 344 and $CustomerScreen/Node/customer.position.y > 425:
-					if $CustomerScreen/Node/customer5.position.x > 344:
-						$CustomerScreen/Node/customer5.position.x -= 3*randf()
-					if $CustomerScreen/Node/customer5.position.y > 425:
-						$CustomerScreen/Node/customer5.position.y -= 1.5*randf()
-					await wait_time(0.015)
-					ready_to_order = 1
-			6:
-				while $CustomerScreen/Node/customer6.position.x > 344 and $CustomerScreen/Node/customer.position.y > 425:
-					if $CustomerScreen/Node/customer6.position.x > 344:
-						$CustomerScreen/Node/customer6.position.x -= 3*randf()
-					if $CustomerScreen/Node/customer6.position.y > 425:
-						$CustomerScreen/Node/customer6.position.y -= 1.5*randf()
-					await wait_time(0.015)
-					ready_to_order = 1
-			7:
-				while $CustomerScreen/Node/customer7.position.x > 344 and $CustomerScreen/Node/customer.position.y > 425:
-					if $CustomerScreen/Node/customer7.position.x > 344:
-						$CustomerScreen/Node/customer7.position.x -= 3*randf()
-					if $CustomerScreen/Node/customer7.position.y > 425:
-						$CustomerScreen/Node/customer7.position.y -= 1.5*randf()
-					await wait_time(0.015)
-					ready_to_order = 1
-			8:
-				while $CustomerScreen/Node/customer8.position.x > 344 and $CustomerScreen/Node/customer.position.y > 425:
-					if $CustomerScreen/Node/customer8.position.x > 344:
-						$CustomerScreen/Node/customer8.position.x -= 3*randf()
-					if $CustomerScreen/Node/customer8.position.y > 425:
-						$CustomerScreen/Node/customer8.position.y -= 1.5*randf()
-					await wait_time(0.015)
-					ready_to_order = 1
+		var customer: Sprite2D = customer_scripts[next_customer_served_in_line]
+		while customer.position.x > 344 and customer.position.y > 425:
+			if customer.position.x > 344:
+				customer.position.x -= 3*randf()
+			if customer.position.y > 425:
+				customer.position.y -= 1.5*randf()
+			await wait_time(0.015)
+			ready_to_order = 1
 			
 		await wait_time(1)
 		character_handed_to = 0
+		
+		var arepa_1 = ArepaData.new()
+		var arepa_2 = ArepaData.new()
+		
+		arepa_1.randomize_fillings()
+		arepa_2.randomize_fillings()
+		
+		customer_orders[next_customer_served_in_line - 1].arepas.push_back(arepa_1)
+		customer_orders[next_customer_served_in_line - 1].arepas.push_back(arepa_2)
+	
 	var cool_down_secs = randf_range(MIN_CUSTOMER_COOL_DOWN_SECS, MAX_CUSTOMER_COOL_DOWN_SECS)
 	var timer: SceneTreeTimer = get_tree().create_timer(cool_down_secs)
 	if day_finished != 1:
