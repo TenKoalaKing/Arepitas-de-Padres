@@ -9,18 +9,12 @@
 [ext_resource type="Script" uid="uid://tqvfdny6tgyt" path="res://scripts/scroll_camera.gd" id="6_p57ef"]
 [ext_resource type="Texture2D" uid="uid://dj332yj5w0qsc" path="res://assets/grass.png" id="7_u5sy4"]
 [ext_resource type="Texture2D" uid="uid://bj2w6amkx6elf" path="res://assets/single_arepa.png" id="8_0tnpc"]
-[ext_resource type="Script" uid="uid://k6ososu73lei" path="res://scripts/arepa_source_area_2d.gd" id="9_vtaks"]
-[ext_resource type="PackedScene" uid="uid://bog6aj1ljwier" path="res://scenes/arepita_movement.tscn" id="10_kvpfn"]
-[ext_resource type="Texture2D" uid="uid://ddf46qjcvisye" path="res://assets/kneading_board.png" id="11_dinhu"]
-[ext_resource type="Script" uid="uid://dl1hlrus6457v" path="res://scripts/board_area.gd" id="12_kvuet"]
-[ext_resource type="PackedScene" uid="uid://c26ejljui6cs6" path="res://scenes/board_thingy.tscn" id="13_264po"]
-[ext_resource type="PackedScene" uid="uid://c88nwp2dqev3x" path="res://scenes/pan.tscn" id="13_trtic"]
+[ext_resource type="PackedScene" uid="uid://c26ejljui6cs6" path="res://scenes/board_thingy.tscn" id="9_vtaks"]
 [ext_resource type="Texture2D" uid="uid://cgfaxqly2tsjw" path="res://assets/616.png" id="15_5newe"]
 [ext_resource type="Texture2D" uid="uid://bcbxv2sobbx1o" path="res://assets/614.png" id="16_37s47"]
 [ext_resource type="Texture2D" uid="uid://dtm3gy6dvq03g" path="res://assets/613.png" id="17_bt5mj"]
 [ext_resource type="Texture2D" uid="uid://bs7q4iks7trs8" path="res://assets/615.png" id="18_e1j6l"]
 [ext_resource type="Texture2D" uid="uid://ddpyv31ft3edw" path="res://assets/620.png" id="19_pl11u"]
-[ext_resource type="Texture2D" uid="uid://lcyd8fsgrpwm" path="res://assets/stove.png" id="20_5newe"]
 [ext_resource type="Texture2D" uid="uid://dsjsxgbh48o7o" path="res://assets/gdj-divider-5243609_1920.png" id="20_bhx41"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_g4v7s"]
@@ -29,12 +23,6 @@ font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Theme" id="Theme_g4v7s"]
 Button/font_sizes/font_size = 36
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
-radius = 238.91507
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
-size = Vector2(1367.3464, 819.24194)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ir15t"]
 animations = [{
@@ -89,7 +77,6 @@ shop_button = NodePath("CustomerScreen/Shop/ShopButton")
 screen_overlay = NodePath("ScreenOverlay")
 
 [node name="StartMenu" type="Control" parent="." unique_id=1883207886]
-visible = false
 custom_minimum_size = Vector2(1152, 648)
 layout_mode = 3
 anchors_preset = 0
@@ -203,62 +190,8 @@ scale = Vector2(0.7, 0.7)
 texture = ExtResource("5_iywne")
 centered = false
 
-[node name="ArepaSource" type="Sprite2D" parent="Interior" unique_id=489480653]
-position = Vector2(299.99997, 497.14282)
-scale = Vector2(0.7, 0.7)
-texture = ExtResource("8_0tnpc")
-
-[node name="Area2D" type="Area2D" parent="Interior/ArepaSource" unique_id=2106432335 node_paths=PackedStringArray("interior")]
-script = ExtResource("9_vtaks")
-arepa_scene = ExtResource("10_kvpfn")
-interior = NodePath("../..")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interior/ArepaSource/Area2D" unique_id=1818448614]
-shape = SubResource("CircleShape2D_g4v7s")
-
-[node name="KneadingBoard" type="Sprite2D" parent="Interior" unique_id=1354834995]
-position = Vector2(942.8572, 488.57147)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("11_dinhu")
-
-[node name="Area2D2" type="Area2D" parent="Interior/KneadingBoard" unique_id=1488444260]
-scale = Vector2(1.2250001, 1.2250001)
-script = ExtResource("12_kvuet")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interior/KneadingBoard/Area2D2" unique_id=580674680]
-position = Vector2(0.00016069412, 2.9153986)
-scale = Vector2(0.9999999, 0.9999999)
-shape = SubResource("RectangleShape2D_g4v7s")
-
-[node name="Stove" type="Sprite2D" parent="Interior" unique_id=1239643955]
-position = Vector2(1909.9999, 464.28568)
-scale = Vector2(0.7142857, 0.7142857)
-texture = ExtResource("20_5newe")
-
-[node name="Stove2" type="Sprite2D" parent="Interior" unique_id=1732844841]
-position = Vector2(2694.2856, 448.5714)
-scale = Vector2(0.7142857, 0.7142857)
-texture = ExtResource("20_5newe")
-
-[node name="Pan" parent="Interior" unique_id=795190046 instance=ExtResource("13_trtic")]
-position = Vector2(2141.4285, 591.4285)
-scale = Vector2(0.14285713, 0.14285713)
-
-[node name="Pan2" parent="Interior" unique_id=968979036 instance=ExtResource("13_trtic")]
-position = Vector2(1831.4285, 581.4285)
-scale = Vector2(0.14285713, 0.14285713)
-
-[node name="Pan3" parent="Interior" unique_id=944725536 instance=ExtResource("13_trtic")]
-position = Vector2(2921.4285, 578.5714)
-scale = Vector2(0.14285713, 0.14285713)
-
-[node name="Pan4" parent="Interior" unique_id=1954638112 instance=ExtResource("13_trtic")]
-position = Vector2(2611.4285, 568.5714)
-scale = Vector2(0.14285713, 0.14285713)
-
 [node name="ScrollCamera" type="Camera2D" parent="Interior" unique_id=1334660153 node_paths=PackedStringArray("bounding_sprite", "screen_overlay", "customer_scripts")]
-position = Vector2(0.00017438615, 4.3596538e-05)
-scale = Vector2(0.9999998, 0.9999998)
+position = Vector2(-615.71423, 751.4285)
 anchor_mode = 0
 enabled = false
 script = ExtResource("6_p57ef")
@@ -274,7 +207,9 @@ twof_path = NodePath("board_thingy/AnimatedSprite2D6")
 threef_path = NodePath("board_thingy/AnimatedSprite2D7")
 fourf_path = NodePath("board_thingy/AnimatedSprite2D8")
 
-[node name="board_thingy" parent="Interior/ScrollCamera" unique_id=1042858072 instance=ExtResource("13_264po")]
+[node name="board_thingy" parent="Interior/ScrollCamera" unique_id=1042858072 instance=ExtResource("9_vtaks")]
+position = Vector2(115.71425, 161.42865)
+scale = Vector2(0.2, 0.18)
 
 [node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="Interior/ScrollCamera/board_thingy" unique_id=1293173767]
 position = Vector2(86.000015, -477.00003)
@@ -314,6 +249,328 @@ sprite_frames = SubResource("SpriteFrames_ir15t")
 animation = &"cheese"
 
 [node name="Sprite2D4" type="Sprite2D" parent="Interior/ScrollCamera/board_thingy" unique_id=671966019]
+position = Vector2(-33.000008, -46.00006)
+scale = Vector2(0.4409091, 0.42731276)
+texture = ExtResource("8_0tnpc")
+
+[node name="board_thingy2" parent="Interior/ScrollCamera" unique_id=1192713616 instance=ExtResource("9_vtaks")]
+position = Vector2(258.5714, 161.42865)
+scale = Vector2(0.2, 0.18)
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="Interior/ScrollCamera/board_thingy2" unique_id=404277836]
+position = Vector2(86.000015, -477.00003)
+rotation = -0.27052602
+scale = Vector2(0.33900005, 0.35025004)
+sprite_frames = SubResource("SpriteFrames_ir15t")
+animation = &"bacon"
+
+[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="Interior/ScrollCamera/board_thingy2" unique_id=1339236975]
+position = Vector2(-168.21916, -466.28613)
+rotation = -1.3421582
+scale = Vector2(0.35380653, 0.32820478)
+sprite_frames = SubResource("SpriteFrames_ir15t")
+animation = &"beef"
+
+[node name="Sprite2D3" type="Sprite2D" parent="Interior/ScrollCamera/board_thingy2" unique_id=1265804997]
+position = Vector2(-82.00001, -653.00006)
+scale = Vector2(0.4409091, 0.42731276)
+texture = ExtResource("8_0tnpc")
+
+[node name="L I N E2" type="Sprite2D" parent="Interior/ScrollCamera/board_thingy2" unique_id=648288894]
+position = Vector2(2.4999967, -200.00003)
+scale = Vector2(0.30364585, 0.24895833)
+texture = ExtResource("20_bhx41")
+
+[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="Interior/ScrollCamera/board_thingy2" unique_id=987854585]
+position = Vector2(95.25, 136.1875)
+scale = Vector2(0.29650003, 0.38162506)
+sprite_frames = SubResource("SpriteFrames_ir15t")
+animation = &"bacon"
+
+[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="Interior/ScrollCamera/board_thingy2" unique_id=939302102]
+position = Vector2(-149.21936, 161.99133)
+rotation = -1.0838494
+scale = Vector2(0.3420354, 0.4155396)
+sprite_frames = SubResource("SpriteFrames_ir15t")
+animation = &"cheese"
+
+[node name="Sprite2D4" type="Sprite2D" parent="Interior/ScrollCamera/board_thingy2" unique_id=518669099]
+position = Vector2(-33.000008, -46.00006)
+scale = Vector2(0.4409091, 0.42731276)
+texture = ExtResource("8_0tnpc")
+
+[node name="board_thingy3" parent="Interior/ScrollCamera" unique_id=2032596719 instance=ExtResource("9_vtaks")]
+position = Vector2(404.28568, 161.42865)
+scale = Vector2(0.2, 0.18)
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="Interior/ScrollCamera/board_thingy3" unique_id=1961086586]
+position = Vector2(86.000015, -477.00003)
+rotation = -0.27052602
+scale = Vector2(0.33900005, 0.35025004)
+sprite_frames = SubResource("SpriteFrames_ir15t")
+animation = &"bacon"
+
+[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="Interior/ScrollCamera/board_thingy3" unique_id=1166189369]
+position = Vector2(-168.21916, -466.28613)
+rotation = -1.3421582
+scale = Vector2(0.35380653, 0.32820478)
+sprite_frames = SubResource("SpriteFrames_ir15t")
+animation = &"beef"
+
+[node name="Sprite2D3" type="Sprite2D" parent="Interior/ScrollCamera/board_thingy3" unique_id=384283962]
+position = Vector2(-82.00001, -653.00006)
+scale = Vector2(0.4409091, 0.42731276)
+texture = ExtResource("8_0tnpc")
+
+[node name="L I N E2" type="Sprite2D" parent="Interior/ScrollCamera/board_thingy3" unique_id=184726883]
+position = Vector2(2.4999967, -200.00003)
+scale = Vector2(0.30364585, 0.24895833)
+texture = ExtResource("20_bhx41")
+
+[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="Interior/ScrollCamera/board_thingy3" unique_id=1557518606]
+position = Vector2(95.25, 136.1875)
+scale = Vector2(0.29650003, 0.38162506)
+sprite_frames = SubResource("SpriteFrames_ir15t")
+animation = &"bacon"
+
+[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="Interior/ScrollCamera/board_thingy3" unique_id=511047738]
+position = Vector2(-149.21936, 161.99133)
+rotation = -1.0838494
+scale = Vector2(0.3420354, 0.4155396)
+sprite_frames = SubResource("SpriteFrames_ir15t")
+animation = &"cheese"
+
+[node name="Sprite2D4" type="Sprite2D" parent="Interior/ScrollCamera/board_thingy3" unique_id=1884848897]
+position = Vector2(-33.000008, -46.00006)
+scale = Vector2(0.4409091, 0.42731276)
+texture = ExtResource("8_0tnpc")
+
+[node name="board_thingy4" parent="Interior/ScrollCamera" unique_id=229504809 instance=ExtResource("9_vtaks")]
+position = Vector2(555.71423, 157.14293)
+scale = Vector2(0.2, 0.18)
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="Interior/ScrollCamera/board_thingy4" unique_id=463273577]
+position = Vector2(86.000015, -477.00003)
+rotation = -0.27052602
+scale = Vector2(0.33900005, 0.35025004)
+sprite_frames = SubResource("SpriteFrames_ir15t")
+animation = &"bacon"
+
+[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="Interior/ScrollCamera/board_thingy4" unique_id=1159751619]
+position = Vector2(-168.21916, -466.28613)
+rotation = -1.3421582
+scale = Vector2(0.35380653, 0.32820478)
+sprite_frames = SubResource("SpriteFrames_ir15t")
+animation = &"beef"
+
+[node name="Sprite2D3" type="Sprite2D" parent="Interior/ScrollCamera/board_thingy4" unique_id=894117981]
+position = Vector2(-82.00001, -653.00006)
+scale = Vector2(0.4409091, 0.42731276)
+texture = ExtResource("8_0tnpc")
+
+[node name="L I N E2" type="Sprite2D" parent="Interior/ScrollCamera/board_thingy4" unique_id=995402228]
+position = Vector2(2.4999967, -200.00003)
+scale = Vector2(0.30364585, 0.24895833)
+texture = ExtResource("20_bhx41")
+
+[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="Interior/ScrollCamera/board_thingy4" unique_id=1251277447]
+position = Vector2(95.25, 136.1875)
+scale = Vector2(0.29650003, 0.38162506)
+sprite_frames = SubResource("SpriteFrames_ir15t")
+animation = &"bacon"
+
+[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="Interior/ScrollCamera/board_thingy4" unique_id=889054052]
+position = Vector2(-149.21936, 161.99133)
+rotation = -1.0838494
+scale = Vector2(0.3420354, 0.4155396)
+sprite_frames = SubResource("SpriteFrames_ir15t")
+animation = &"cheese"
+
+[node name="Sprite2D4" type="Sprite2D" parent="Interior/ScrollCamera/board_thingy4" unique_id=482953686]
+position = Vector2(-33.000008, -46.00006)
+scale = Vector2(0.4409091, 0.42731276)
+texture = ExtResource("8_0tnpc")
+
+[node name="board_thingy5" parent="Interior/ScrollCamera" unique_id=367981908 instance=ExtResource("9_vtaks")]
+position = Vector2(714.28564, 157.14293)
+scale = Vector2(0.2, 0.18)
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="Interior/ScrollCamera/board_thingy5" unique_id=1625968698]
+position = Vector2(86.000015, -477.00003)
+rotation = -0.27052602
+scale = Vector2(0.33900005, 0.35025004)
+sprite_frames = SubResource("SpriteFrames_ir15t")
+animation = &"bacon"
+
+[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="Interior/ScrollCamera/board_thingy5" unique_id=1922472776]
+position = Vector2(-168.21916, -466.28613)
+rotation = -1.3421582
+scale = Vector2(0.35380653, 0.32820478)
+sprite_frames = SubResource("SpriteFrames_ir15t")
+animation = &"beef"
+
+[node name="Sprite2D3" type="Sprite2D" parent="Interior/ScrollCamera/board_thingy5" unique_id=61302257]
+position = Vector2(-82.00001, -653.00006)
+scale = Vector2(0.4409091, 0.42731276)
+texture = ExtResource("8_0tnpc")
+
+[node name="L I N E2" type="Sprite2D" parent="Interior/ScrollCamera/board_thingy5" unique_id=249809273]
+position = Vector2(2.4999967, -200.00003)
+scale = Vector2(0.30364585, 0.24895833)
+texture = ExtResource("20_bhx41")
+
+[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="Interior/ScrollCamera/board_thingy5" unique_id=1759882335]
+position = Vector2(95.25, 136.1875)
+scale = Vector2(0.29650003, 0.38162506)
+sprite_frames = SubResource("SpriteFrames_ir15t")
+animation = &"bacon"
+
+[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="Interior/ScrollCamera/board_thingy5" unique_id=423521536]
+position = Vector2(-149.21936, 161.99133)
+rotation = -1.0838494
+scale = Vector2(0.3420354, 0.4155396)
+sprite_frames = SubResource("SpriteFrames_ir15t")
+animation = &"cheese"
+
+[node name="Sprite2D4" type="Sprite2D" parent="Interior/ScrollCamera/board_thingy5" unique_id=1036084076]
+position = Vector2(-33.000008, -46.00006)
+scale = Vector2(0.4409091, 0.42731276)
+texture = ExtResource("8_0tnpc")
+
+[node name="board_thingy6" parent="Interior/ScrollCamera" unique_id=1124480647 instance=ExtResource("9_vtaks")]
+position = Vector2(877.1428, 157.14293)
+scale = Vector2(0.2, 0.18)
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="Interior/ScrollCamera/board_thingy6" unique_id=1402189297]
+position = Vector2(86.000015, -477.00003)
+rotation = -0.27052602
+scale = Vector2(0.33900005, 0.35025004)
+sprite_frames = SubResource("SpriteFrames_ir15t")
+animation = &"bacon"
+
+[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="Interior/ScrollCamera/board_thingy6" unique_id=903043782]
+position = Vector2(-168.21916, -466.28613)
+rotation = -1.3421582
+scale = Vector2(0.35380653, 0.32820478)
+sprite_frames = SubResource("SpriteFrames_ir15t")
+animation = &"beef"
+
+[node name="Sprite2D3" type="Sprite2D" parent="Interior/ScrollCamera/board_thingy6" unique_id=710321881]
+position = Vector2(-82.00001, -653.00006)
+scale = Vector2(0.4409091, 0.42731276)
+texture = ExtResource("8_0tnpc")
+
+[node name="L I N E2" type="Sprite2D" parent="Interior/ScrollCamera/board_thingy6" unique_id=856555315]
+position = Vector2(2.4999967, -200.00003)
+scale = Vector2(0.30364585, 0.24895833)
+texture = ExtResource("20_bhx41")
+
+[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="Interior/ScrollCamera/board_thingy6" unique_id=751615613]
+position = Vector2(95.25, 136.1875)
+scale = Vector2(0.29650003, 0.38162506)
+sprite_frames = SubResource("SpriteFrames_ir15t")
+animation = &"bacon"
+
+[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="Interior/ScrollCamera/board_thingy6" unique_id=1414615547]
+position = Vector2(-149.21936, 161.99133)
+rotation = -1.0838494
+scale = Vector2(0.3420354, 0.4155396)
+sprite_frames = SubResource("SpriteFrames_ir15t")
+animation = &"cheese"
+
+[node name="Sprite2D4" type="Sprite2D" parent="Interior/ScrollCamera/board_thingy6" unique_id=1922471585]
+position = Vector2(-33.000008, -46.00006)
+scale = Vector2(0.4409091, 0.42731276)
+texture = ExtResource("8_0tnpc")
+
+[node name="board_thingy7" parent="Interior/ScrollCamera" unique_id=1157884443 instance=ExtResource("9_vtaks")]
+position = Vector2(1042.8572, 157.14293)
+scale = Vector2(0.2, 0.18)
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="Interior/ScrollCamera/board_thingy7" unique_id=1980465895]
+position = Vector2(86.000015, -477.00003)
+rotation = -0.27052602
+scale = Vector2(0.33900005, 0.35025004)
+sprite_frames = SubResource("SpriteFrames_ir15t")
+animation = &"bacon"
+
+[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="Interior/ScrollCamera/board_thingy7" unique_id=442184603]
+position = Vector2(-168.21916, -466.28613)
+rotation = -1.3421582
+scale = Vector2(0.35380653, 0.32820478)
+sprite_frames = SubResource("SpriteFrames_ir15t")
+animation = &"beef"
+
+[node name="Sprite2D3" type="Sprite2D" parent="Interior/ScrollCamera/board_thingy7" unique_id=1748569615]
+position = Vector2(-82.00001, -653.00006)
+scale = Vector2(0.4409091, 0.42731276)
+texture = ExtResource("8_0tnpc")
+
+[node name="L I N E2" type="Sprite2D" parent="Interior/ScrollCamera/board_thingy7" unique_id=1329029912]
+position = Vector2(2.4999967, -200.00003)
+scale = Vector2(0.30364585, 0.24895833)
+texture = ExtResource("20_bhx41")
+
+[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="Interior/ScrollCamera/board_thingy7" unique_id=1735672206]
+position = Vector2(95.25, 136.1875)
+scale = Vector2(0.29650003, 0.38162506)
+sprite_frames = SubResource("SpriteFrames_ir15t")
+animation = &"bacon"
+
+[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="Interior/ScrollCamera/board_thingy7" unique_id=1073993228]
+position = Vector2(-149.21936, 161.99133)
+rotation = -1.0838494
+scale = Vector2(0.3420354, 0.4155396)
+sprite_frames = SubResource("SpriteFrames_ir15t")
+animation = &"cheese"
+
+[node name="Sprite2D4" type="Sprite2D" parent="Interior/ScrollCamera/board_thingy7" unique_id=1475723275]
+position = Vector2(-33.000008, -46.00006)
+scale = Vector2(0.4409091, 0.42731276)
+texture = ExtResource("8_0tnpc")
+
+[node name="board_thingy8" parent="Interior/ScrollCamera" unique_id=844598715 instance=ExtResource("9_vtaks")]
+position = Vector2(1218.5715, 157.14293)
+scale = Vector2(0.2, 0.18)
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="Interior/ScrollCamera/board_thingy8" unique_id=892219769]
+position = Vector2(86.000015, -477.00003)
+rotation = -0.27052602
+scale = Vector2(0.33900005, 0.35025004)
+sprite_frames = SubResource("SpriteFrames_ir15t")
+animation = &"bacon"
+
+[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="Interior/ScrollCamera/board_thingy8" unique_id=127069645]
+position = Vector2(-168.21916, -466.28613)
+rotation = -1.3421582
+scale = Vector2(0.35380653, 0.32820478)
+sprite_frames = SubResource("SpriteFrames_ir15t")
+animation = &"beef"
+
+[node name="Sprite2D3" type="Sprite2D" parent="Interior/ScrollCamera/board_thingy8" unique_id=1393151525]
+position = Vector2(-82.00001, -653.00006)
+scale = Vector2(0.4409091, 0.42731276)
+texture = ExtResource("8_0tnpc")
+
+[node name="L I N E2" type="Sprite2D" parent="Interior/ScrollCamera/board_thingy8" unique_id=1452244148]
+position = Vector2(2.4999967, -200.00003)
+scale = Vector2(0.30364585, 0.24895833)
+texture = ExtResource("20_bhx41")
+
+[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="Interior/ScrollCamera/board_thingy8" unique_id=843273602]
+position = Vector2(95.25, 136.1875)
+scale = Vector2(0.29650003, 0.38162506)
+sprite_frames = SubResource("SpriteFrames_ir15t")
+animation = &"bacon"
+
+[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="Interior/ScrollCamera/board_thingy8" unique_id=1206748756]
+position = Vector2(-149.21936, 161.99133)
+rotation = -1.0838494
+scale = Vector2(0.3420354, 0.4155396)
+sprite_frames = SubResource("SpriteFrames_ir15t")
+animation = &"cheese"
+
+[node name="Sprite2D4" type="Sprite2D" parent="Interior/ScrollCamera/board_thingy8" unique_id=1778167183]
 position = Vector2(-33.000008, -46.00006)
 scale = Vector2(0.4409091, 0.42731276)
 texture = ExtResource("8_0tnpc")
