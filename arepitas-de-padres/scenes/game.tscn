@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://k6ososu73lei" path="res://scripts/arepa_source_area_2d.gd" id="9_vtaks"]
 [ext_resource type="PackedScene" uid="uid://bog6aj1ljwier" path="res://scenes/arepita_movement.tscn" id="10_kvpfn"]
 [ext_resource type="Texture2D" uid="uid://m83dx7a4jmql" path="res://assets/kneading_board.png" id="11_dinhu"]
-[ext_resource type="Script" uid="uid://dl1hlrus6457v" path="res://scenes/board_area.gd" id="12_kvuet"]
+[ext_resource type="Script" uid="uid://dl1hlrus6457v" path="res://scripts/board_area.gd" id="12_kvuet"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_g4v7s"]
 font_size = 90
@@ -27,14 +27,13 @@ radius = 247.5505
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(1680.0002, 1005.71436)
 
-[node name="Game" type="Node2D" unique_id=255140021 node_paths=PackedStringArray("start_menu", "customer_screen", "interior", "start_button", "shop_button", "interior_camera", "screen_overlay")]
+[node name="Game" type="Node2D" unique_id=255140021 node_paths=PackedStringArray("start_menu", "customer_screen", "interior", "start_button", "shop_button", "screen_overlay")]
 script = ExtResource("1_uwrxv")
 start_menu = NodePath("StartMenu")
 customer_screen = NodePath("CustomerScreen")
 interior = NodePath("Interior")
 start_button = NodePath("StartMenu/StartButton")
 shop_button = NodePath("CustomerScreen/Shop/ShopButton")
-interior_camera = NodePath("Interior/ScrollCamera")
 screen_overlay = NodePath("ScreenOverlay")
 
 [node name="StartMenu" type="Control" parent="." unique_id=1883207886]
